@@ -11,6 +11,8 @@ def update(request):
 
     return JsonResponse({'message':'OK!'})
 
+    
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
