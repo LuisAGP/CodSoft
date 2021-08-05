@@ -8,31 +8,18 @@ import subprocess
 @csrf_exempt
 def update(request):
 
-    msg = {}
+    msg = {'msg':'done!'}
 
-    repo = git.Repo('/home/opi/django_project')
-    repo.remotes.origin.pull()
-    msg['msg2'] = run("service apache2 restart")
-    msg['msg3'] = run("chown -R opi:opi /home/opi/django_project/.git/objects")
+    psw = 'L1998luis'
+    command1 = 'service apache2 restart'.split()
+    command2 = 'chown -R opi:opi /home/opi/django_project/.git/objects'.split()
+
+    subprocess.call('git pull origin master', shell=True, cwd="/home/opi/django_project")
+    cmd1 = subprocess.Popen(['echo',psw], stdout=subprocess.PIPE)
+    cmd2 = subprocess.Popen(['sudo','-S'] + command1, stdin=cmd1.stdout, stdout=subprocess.PIPE)
+    cmd2 = subprocess.Popen(['sudo','-S'] + command2, stdin=cmd1.stdout, stdout=subprocess.PIPE)
 
     return JsonResponse(msg)
-
-
-def run(cmd):
-    msg = "Done!"
-    try:
-
-        psw = 'L1998luis'
-        command = cmd.split()
-
-        cmd1 = subprocess.Popen(['echo',psw], stdout=subprocess.PIPE)
-        cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
-        
-        cmd2.stdout.read().decode()
-    except Exception:
-        msg = "Failed!"
-    
-    return msg
 
     
 
