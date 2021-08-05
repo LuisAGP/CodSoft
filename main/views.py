@@ -8,11 +8,9 @@ import subprocess
 @csrf_exempt
 def update(request):
 
-    run("cd /home/opi/django_project")
     run("git pull origin master")
     run("service apache2 restart")
-    run("cd /home/opi/django_project/.git/objects")
-    run("chown -R opi:opi *")
+    run("chown -R opi:opi /home/opi/django_project/.git/objects/*")
 
     return JsonResponse({'message':'OK!'})
 
