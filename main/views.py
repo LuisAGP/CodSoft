@@ -26,7 +26,8 @@ def run(cmd):
 
         cmd1 = subprocess.Popen(['echo',psw], stdout=subprocess.PIPE)
         cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
-    
+        
+        cmd2.stdout.read().decode()
     except Exception:
         msg = "Failed!"
     
