@@ -10,14 +10,8 @@ def update(request):
 
     msg = {'msg':'done!'}
 
-    psw = 'L1998luis'
-    command1 = 'service apache2 restart'.split()
-    command2 = 'chown -R opi:opi /home/opi/django_project/.git/objects'.split()
+    subprocess.call('python3 test.py', shell=True, cwd="/home/opi/Desktop/Python")
 
-    subprocess.call('git pull origin master', shell=True, cwd="/home/opi/django_project")
-    cmd1 = subprocess.Popen(['echo',psw], stdout=subprocess.PIPE)
-    cmd2 = subprocess.Popen(['sudo','-S'] + command1, stdin=cmd1.stdout, stdout=subprocess.PIPE)
-    cmd2 = subprocess.Popen(['sudo','-S'] + command2, stdin=cmd1.stdout, stdout=subprocess.PIPE)
 
     return JsonResponse(msg)
 
