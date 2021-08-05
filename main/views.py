@@ -10,9 +10,10 @@ def update(request):
 
     msg = {}
 
-    msg['msg1'] = run("git pull origin master")
+    repo = git.Repo('/home/opi/django_project')
+    repo.remotes.origin.pull()
     msg['msg2'] = run("service apache2 restart")
-    msg['msg3'] = run("chown -R opi:opi /home/opi/django_project/.git/objects/*")
+    msg['msg3'] = run("chown -R opi:opi /home/opi/django_project/.git/objects")
 
     return JsonResponse(msg)
 
