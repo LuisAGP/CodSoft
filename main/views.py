@@ -8,6 +8,7 @@ import requests
 def update(request):
 
     msg = {'msg':'done!'}
+    
     requests.get('http://localhost:8001/gitPull/')
     
 
