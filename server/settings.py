@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'a115982805cf61.localhost.run',
     'localhost',
     'codsoft.lhr.rocks'
 ]
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'main',
 ]
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -61,7 +62,9 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,4 +134,29 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'build/static/')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
+
+
+
+CORS_ALLOW_CREDENTIALS = True
+
+# ALow only custom origins
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'https://codsoft.lhr.rocks'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'https://codsoft.lhr.rocks'
+]
+
+# List of host witch are trusted origins
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+]
