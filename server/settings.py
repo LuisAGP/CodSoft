@@ -64,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'build'),
+            os.path.join(BASE_DIR, 'frontend/templates/frontend'),
             os.path.join(BASE_DIR, 'validation'),
         ],
         'APP_DIRS': True,
@@ -159,4 +159,5 @@ CORS_ORIGIN_WHITELIST = [
 # List of host witch are trusted origins
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
+    'https://codsoft.lhr.rocks',
 ]
