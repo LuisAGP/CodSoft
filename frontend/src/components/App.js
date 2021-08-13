@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import Test from './Test';
 
 
 export default class App extends Component {
@@ -9,7 +10,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>It's everything fine!</div>
+            <div>
+                It's everything fine!
+                <Test />
+            </div>
         )
     }
 }
