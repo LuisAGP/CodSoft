@@ -3,8 +3,10 @@ import React from 'react'
 const Test = () => {
     return (
         <div>
-            <p>This is a new component to test the server</p>
-            <p>This is just a extra line</p>
+            <p>Apache ready...</p>
+            <p>Django ready...</p>
+            <p>React ready...</p>
+            <p>Autoupdate ready...</p>
         </div>
     )
 }
