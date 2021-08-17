@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Test from './Test';
-
+import Header from './Header';
+import '../../static/css/index.css'
 
 export default class App extends Component {
     constructor(props) {
@@ -11,8 +11,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                It's everything fine!
-                <Test />
+               <Header />
             </div>
         )
     }
