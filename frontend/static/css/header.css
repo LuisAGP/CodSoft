@@ -34,3 +34,10 @@ img{
     margin-right: 15px;
     text-transform: uppercase;
 }
+
+.options a:hover{
+    transition: all .5s ease;
+    background-color: white;
+    border-radius: 1rem;
+    color: #1976d2;
+}
