@@ -33,6 +33,7 @@ img{
     text-decoration: none;
     margin-right: 15px;
     text-transform: uppercase;
+    padding: .7rem;
 }
 
 .options a:hover{
