@@ -11,7 +11,6 @@ img{
 .header{
     padding: .5rem 1rem;
     height: 3.5rem;
-    width: 100%;
     background-color: #1976d2;
     display: flex;
     justify-content: space-between;
