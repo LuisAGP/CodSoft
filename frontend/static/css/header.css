@@ -26,6 +26,11 @@ img{
 .menu-icon{
     width: 20px;
     height: 20px;
+    cursor: pointer;
+}
+
+.menu-icon img:hover{
+    transform: scale(1.08);
 }
 
 .options{
@@ -51,15 +56,26 @@ img{
 
 /*I****************************** Menu *********************************/
 
+.hide{
+    transition: all .3s ease;
+    width: 0rem;
+}
+
+.show{
+    transition: all .3s ease;
+    width: 19rem;
+}
+
 .menu-tools{
     position: absolute;
     top: 0;
     left: 0;
-    width: 19rem;
+    overflow: hidden;
     height: 100vh;
     z-index: 1;
     background-color: white;
     border-right: 1px solid rgb(221, 221, 221);
+    outline: none;
 }
 
 .menu-tools h2 {
@@ -87,6 +103,7 @@ img{
 }
 
 .menu-options a {
+    overflow: hidden;
     padding: .6rem 1.6rem .6rem 1rem;
     text-decoration: none;
     display: block;
