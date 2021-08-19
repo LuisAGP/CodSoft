@@ -57,12 +57,12 @@ img{
 /*I****************************** Menu *********************************/
 
 .hide{
-    transition: all .3s ease;
+    transition: all .5s ease;
     width: 0rem;
 }
 
 .show{
-    transition: all .3s ease;
+    transition: all .5s ease;
     width: 19rem;
 }
 
@@ -100,6 +100,7 @@ img{
 .menu-options {
     overflow-x: hidden;
     width: 100%;
+    min-width: 15rem;
 }
 
 .menu-options a {
