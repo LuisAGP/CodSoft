@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Header from './Header';
-import '../../static/css/index.css'
+import '../../static/css/index.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './Home';
 
 export default class App extends Component {
     constructor(props) {
@@ -10,9 +12,23 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
-               <Header />
-            </div>
+            <Router>
+                <div>
+                    <Header />
+
+                    <Switch>
+
+                        <Route path="/" exact>
+                            <Home />
+                        </Route>
+
+                        <Route path="/example" >
+                            <div>Done!</div>
+                        </Route>
+
+                    </Switch>
+                </div>
+            </Router>
         )
     }
 }

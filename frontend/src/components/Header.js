@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../static/css/header.css'
 import menuIcon from '../../static/images/menu.svg'
+import {Link} from 'react-router-dom'
 
 const Header = () => {
 
@@ -27,12 +28,13 @@ const Header = () => {
                 <h2>CodTools</h2>
 
                 <div className="menu-options">
-                    <a href="#">Modal Maker</a>
-                    <a href="#">Box-Shadow Calculator</a>
-                    <a href="#">Button generator</a>
-                    <a href="#">General Ajax function</a>
-                    <a href="#">Image Reziser</a>
-                    <a href="#">Table Generator</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/example">Modal Maker</Link>
+                    <Link to="#">Box-Shadow Calculator</Link>
+                    <Link to="#">Button generator</Link>
+                    <Link to="#">General Ajax function</Link>
+                    <Link to="#">Image Reziser</Link>
+                    <Link to="#">Table Generator</Link>
                 </div>
             </div>
         </div>
