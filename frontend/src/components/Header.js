@@ -21,14 +21,13 @@ const Header = () => {
             </div>
 
             <div className="options">
-                <a href="#">Get Started</a>
+                <Link to="/">Get Started</Link>
             </div>
 
             <div className="menu-tools hide" id="menu" tabIndex="0" onBlur={() => document.getElementById('menu').className="menu-tools hide"}>
                 <h2>CodTools</h2>
 
                 <div className="menu-options">
-                    <Link to="/">Home</Link>
                     <Link to="/example">Modal Maker</Link>
                     <Link to="#">Box-Shadow Calculator</Link>
                     <Link to="#">Button generator</Link>
