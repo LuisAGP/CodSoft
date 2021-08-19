@@ -1,6 +1,3 @@
-main/__pycache__/
-server/__pycache__/
-frontend/__pycache__/
-env/
+!**/__pycache__/
 validation/
 frontend/static/frontend/main.js
