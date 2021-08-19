@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="menu-options">
                     <Link to="/">Home</Link>
                     <Link to="/example">Modal Maker</Link>
-                    <Link to="/example">Box-Shadow Calculator</Link>
+                    <Link to="#">Box-Shadow Calculator</Link>
                     <Link to="#">Button generator</Link>
                     <Link to="#">General Ajax function</Link>
                     <Link to="#">Image Reziser</Link>
