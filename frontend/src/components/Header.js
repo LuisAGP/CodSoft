@@ -13,7 +13,6 @@ const Header = () => {
 
     }
 
-
     return (
         <div className="header">
             <div className="menu-icon">
@@ -31,7 +30,7 @@ const Header = () => {
                     <a href="#">Modal Maker</a>
                     <a href="#">Box-Shadow Calculator</a>
                     <a href="#">Button generator</a>
-                    <a href="#">General Ajax</a>
+                    <a href="#">General Ajax function</a>
                     <a href="#">Image Reziser</a>
                     <a href="#">Table Generator</a>
                 </div>
