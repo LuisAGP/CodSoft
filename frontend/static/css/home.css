@@ -5,15 +5,13 @@
     justify-content: center;
 }
 
-.main{
-    padding: 0 1.5rem;
+.grid-4-2{
+    display: grid;
+    grid-template-columns: 4fr 2fr;
 }
 
 .logo{
     max-width: 12rem;
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
 }
 
 .main .phrase{
@@ -29,5 +27,29 @@
     color: rgb(85, 85, 85);
     font-weight: 400;
     text-align: justify;
-    margin: 0;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+    .grid-4-2{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .logo{
+        grid-row-start: 1;
+        width: 100%;
+        max-width: 100%;
+        width: 8rem;
+    }
+
+    .main{
+        padding: 2.5rem;
+    }
+
+    .main h1{
+        text-align: center;
+        font-size: 1.7rem;
+    }
+
 }

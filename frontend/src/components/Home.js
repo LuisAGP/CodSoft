@@ -6,21 +6,18 @@ const Home = () => {
     return (
         <div className="home">
 
-            <div className="col-4-2 mw-80">
+            <div className="grid-4-2 mw-80">
 
-                <div className="main">
+                <div className="main pd-1">
                     <h1 className="phrase">TOOLS FOR HTML, JAVASCRIPT AND CSS</h1>
-                </div>
-
-                <div className="logo">
-                    <img src={logo} alt="Logo" />
-                </div>
-
-                <div className="main">
                     <p>
                         This is a modern way to design and style your components while 
                         maintaining your creativity and seeing changes instantly. 
                     </p>
+                </div>
+
+                <div className="logo">
+                    <img src={logo} alt="Logo" />
                 </div>
 
             </div>
