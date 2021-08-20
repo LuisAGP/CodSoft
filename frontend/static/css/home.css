@@ -5,9 +5,15 @@
     justify-content: center;
 }
 
+.main{
+    padding: 0 1.5rem;
+}
 
-.main .logo{
+.logo{
     max-width: 12rem;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 .main .phrase{
@@ -16,10 +22,12 @@
     font-weight: 500;
 }
 
+
 .main p{
     line-height: 1.7;
     font-size: 1.1rem;
     color: rgb(85, 85, 85);
     font-weight: 400;
     text-align: justify;
+    margin: 0;
 }

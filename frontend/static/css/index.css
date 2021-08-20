@@ -43,6 +43,13 @@ div.center{
     grid-template-columns: 4fr 2fr;
 }
 
+
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+    .col-4-2{
+        display: block;
+    }
+}
+
 /**************************************************************************/
 
 
