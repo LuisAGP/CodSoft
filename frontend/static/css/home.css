@@ -1,0 +1,25 @@
+.home{
+    height: calc(100vh - 3.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main .logo{
+    max-width: 12rem;
+}
+
+.main .phrase{
+    color: rgb(43, 43, 43);
+    margin: 1.5rem 0;
+    font-weight: 500;
+}
+
+.main p{
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+    text-align: justify;
+}

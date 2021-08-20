@@ -19,13 +19,14 @@ const Header = () => {
             <div className="menu-icon">
                 <img src={menuIcon} alt="Menu_icon" onClick={ () => showMenu()}/>
             </div>
-
+            
             <div className="options">
                 <Link to="/">Get Started</Link>
+                <Link to="/">Home</Link>
             </div>
 
             <div className="menu-tools hide" id="menu" tabIndex="0" onBlur={() => document.getElementById('menu').className="menu-tools hide"}>
-                <h2>CodTools</h2>
+                <h3>{"< CODING TOOLS />"}</h3>
 
                 <div className="menu-options">
                     <Link to="/example">Modal Maker</Link>
