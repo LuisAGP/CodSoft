@@ -1,5 +1,5 @@
 .home{
-    height: calc(100vh - 3.5rem);
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +67,7 @@
     background-color: rgb(238, 238, 238);
     border-radius: 1rem;
     padding: 1rem;
+    height: auto;
 }
 
 .tool-content div{
@@ -94,9 +95,29 @@
 
 
 
-@media (min-width: 736px) and (max-width: 900px) {
+@media (min-width: 600px) {
     .tools{
         display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    .tool-content{
+        display: grid;
+        grid-template-rows: 1fr 5fr 1fr;
+        grid-template-columns: auto;
+        align-items: center;
+        margin: 1rem;
+    }
+
+    .tool-content .description{
+        height: 100%;
+        margin: 1.5rem 0;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .tools{
         grid-template-columns: repeat(3, 33.3%);
     }
 }
