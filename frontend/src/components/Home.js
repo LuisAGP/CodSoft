@@ -26,6 +26,7 @@ const Home = () => {
             </main>
 
 
+            <div className="separator">See all our tools available below!</div>
 
 
             <section className="tools">
