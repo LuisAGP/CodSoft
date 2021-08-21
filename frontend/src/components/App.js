@@ -4,6 +4,7 @@ import Header from './Header';
 import '../../static/css/index.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
+import Footer from './Footer';
 
 export default class App extends Component {
     constructor(props) {
@@ -27,6 +28,8 @@ export default class App extends Component {
                         </Route>
 
                     </Switch>
+
+                    <Footer />
                 </div>
             </Router>
         )

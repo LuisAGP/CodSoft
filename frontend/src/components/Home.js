@@ -142,9 +142,6 @@ const Home = () => {
 
             </section>
             
-            <footer>
-
-            </footer>
         </div>
     )
 }
