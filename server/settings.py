@@ -29,7 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'codsoft.lhr.rocks'
+    'codsoft.lhr.rocks',
+    '192.168.100.10'
 ]
 
 
