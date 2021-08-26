@@ -4,5 +4,5 @@ from .views import *
 
 urlpatterns = [
     path('', index),
-    path('example/', index)
+    path('modalmaker/', index)
 ]

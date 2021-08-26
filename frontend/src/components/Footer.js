@@ -28,7 +28,7 @@ const Footer = () => {
                         <h4>Explore</h4>
 
                         <ul>
-                            <li><Link to="/example">Modal Maker</Link></li>
+                            <li><Link to="/modalmaker">Modal Maker</Link></li>
                             <li><Link to="#">Box-Shadow Calculator</Link></li>
                             <li><Link to="#">Button generator</Link></li>
                             <li><Link to="#">General Ajax function</Link></li>

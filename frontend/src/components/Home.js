@@ -44,7 +44,7 @@ const Home = () => {
                     </div>
 
                     <div className="center">
-                        <Link to="#" className="btn btn-primary">Learn more</Link>
+                        <Link to="/modalmaker" className="btn btn-primary">Learn more</Link>
                     </div>
                 </div>
 

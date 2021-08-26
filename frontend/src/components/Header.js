@@ -29,7 +29,7 @@ const Header = () => {
                 <h3>{"< CODING TOOLS />"}</h3>
 
                 <div className="menu-options">
-                    <Link to="/example">Modal Maker</Link>
+                    <Link to="/modalmaker">Modal Maker</Link>
                     <Link to="#">Box-Shadow Calculator</Link>
                     <Link to="#">Button generator</Link>
                     <Link to="#">General Ajax function</Link>
