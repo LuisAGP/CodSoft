@@ -3,6 +3,24 @@ import '../../../static/css/tools/modalmaker.css'
 import closeIcon from '../../../static/images/close.svg'
 
 const ModalMaker = () => {
+
+    const openModal = () => {
+
+        let modal = document.getElementById('modal-1');
+        let content = modal.parentNode;
+
+        console.log(content.className, content.className == "modal-content-closed")
+
+        if(content.className == "modal-content-closed"){
+            content.className = "modal-content-opened";
+            modal.className = "modal modal-opened";
+        }else{
+            content.className = "modal-content-closed";
+            modal.className = "modal modal-closed";
+        }
+
+    }
+
     return (
         <div>
             <div className="page-title">
@@ -16,17 +34,19 @@ const ModalMaker = () => {
 
 
             <div className="control-panel">
-
+                <button onClick={openModal}>
+                    Test it
+                </button>
             </div>
 
 
 
-            <div className="modal-content">
-                <div className="modal" id="modal-1">
+            <div className="modal-content-closed">
+                <div className="modal modal-closed" id="modal-1">
                     <div className="head">
                         <h4>Modal Example</h4>
 
-                        <a href="#">
+                        <a href="#" onClick={openModal}>
                             <img src={closeIcon} alt="" />
                         </a>
                         
@@ -37,7 +57,8 @@ const ModalMaker = () => {
                     </div>
 
                     <div className="footer">
-                        <button>SEND</button>
+                        <button className="modal-btn btn-1">Yes</button>
+                        <button className="modal-btn btn-2">No</button>
                     </div>
                 </div>
 
