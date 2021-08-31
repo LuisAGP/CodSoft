@@ -5,3 +5,4 @@ from django.db.models.fields import IntegerField
 class Test(models.Model):
     id_test = models.IntegerField()
     text = models.CharField(max_length=255, null=True)
+    a = models.CharField(max_length=255, null=True)
