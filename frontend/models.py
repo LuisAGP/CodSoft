@@ -17,3 +17,4 @@ class Test(models.Model):
     i = models.IntegerField(default=1, null=True)
     j = models.CharField(max_length=50, null=True)
     k = models.CharField(max_length=10, default='Testing...', null=True)
+    l = models.CharField(max_length=50, null=True)
