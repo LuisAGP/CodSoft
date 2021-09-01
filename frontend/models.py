@@ -16,3 +16,4 @@ class Test(models.Model):
     h = models.EmailField(null=True)
     i = models.IntegerField(default=1, null=True)
     j = models.CharField(max_length=50, null=True)
+    k = models.CharField(max_length=10, default='Testing...', null=True)
