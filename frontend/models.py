@@ -13,3 +13,4 @@ class Test(models.Model):
     e = models.CharField(max_length=50, default=True)
     f = models.DateField(default=timezone.now, null=True)
     g = models.IntegerField(null=True, default=2)
+    h = models.EmailField(null=True)
