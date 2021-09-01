@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import IntegerField
+from datetime import date
 
 # Create your models here.
 class Test(models.Model):
@@ -10,3 +11,4 @@ class Test(models.Model):
     c = models.BooleanField(default=True, null=True)
     d = models.IntegerField(default=5)
     e = models.CharField(max_length=50, default=True)
+    f = models.DateField(default=date.today())
