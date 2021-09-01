@@ -1,5 +1,5 @@
-__pycache__
-migrations
+__pycache__/
+migrations/
 validation/
 frontend/static/frontend/main.js
 server/dbconnection.py
