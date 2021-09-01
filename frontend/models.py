@@ -1,4 +1,4 @@
-from django.db import DefaultConnectionProxy, models
+from django.db import models
 from django.db.models.fields import IntegerField
 from django.utils import timezone
 
