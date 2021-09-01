@@ -9,3 +9,4 @@ class Test(models.Model):
     b = models.IntegerField(null=True)
     c = models.BooleanField(default=True, null=True)
     d = models.IntegerField(default=5)
+    e = models.CharField(max_length=50, default=True)
