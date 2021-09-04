@@ -7,3 +7,4 @@ class Test(models.Model):
     text = models.CharField(max_length=255, null=True)
     a = models.CharField(max_length=255, null=True)
     phone = models.CharField(max_length=10, null=True, unique=True)
+    email = models.EmailField(null=True)
