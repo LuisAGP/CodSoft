@@ -10,10 +10,10 @@ def update(request):
 
     msg = {'msg':'done!'}
     
-    requests.get('http://localhost:8001/gitPull/')
+    #requests.get('http://localhost:8001/gitPull/')
     
-    subprocess.Popen("python3 /home/opi/django_project/manage.py makemigrations".split())
-    subprocess.Popen("python3 /home/opi/django_project/manage.py migrate".split())
+    command1 = '/home/opi/Desktop/Python/command.sh'.split()
+    cmd1 = subprocess.call(command1)
 
     return JsonResponse(msg)
 
