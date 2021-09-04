@@ -11,3 +11,4 @@ class Test(models.Model):
     age = models.IntegerField(null=True)
     b = models.CharField(max_length=30, null=True)
     c = models.CharField(max_length=30, null=True)
+    d = models.CharField(max_length=30, null=True)
