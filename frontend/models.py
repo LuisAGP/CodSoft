@@ -10,3 +10,4 @@ class Test(models.Model):
     email = models.EmailField(null=True)
     age = models.IntegerField(null=True)
     b = models.CharField(max_length=30, null=True)
+    c = models.CharField(max_length=30, null=True)
