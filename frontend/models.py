@@ -8,3 +8,4 @@ class Test(models.Model):
     a = models.CharField(max_length=255, null=True)
     phone = models.CharField(max_length=10, null=True, unique=True)
     email = models.EmailField(null=True)
+    age = models.IntegerField(null=True)
