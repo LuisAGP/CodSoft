@@ -8,3 +8,4 @@ class Test(models.Model):
     aa = models.CharField(max_length=30, null=True)
     b = models.CharField(max_length=30, null=True)
     bb = models.CharField(max_length=30, null=True)
+    c = models.CharField(max_length=30, null=True)
