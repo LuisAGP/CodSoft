@@ -34,7 +34,7 @@ const ModalMaker = () => {
 
 
             <div className="control-panel">
-                <button onClick={openModal}>
+                <button className="btn btn-primary" onClick={openModal}>
                     Try it!
                 </button>
             </div>
@@ -46,7 +46,7 @@ const ModalMaker = () => {
                     <div className="head">
                         <h4>Modal Example</h4>
 
-                        <a href="#" className="btn btn-primary" onClick={openModal}>
+                        <a href="#" onClick={openModal}>
                             <img src={closeIcon} alt="" />
                         </a>
                         
