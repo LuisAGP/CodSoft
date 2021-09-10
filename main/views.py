@@ -10,7 +10,9 @@ import subprocess
 def update(request):
 
     msg = {'msg':'done!'}
-    requests.get('http://localhost:8001/gitPull/')
+    #requests.get('http://localhost:8001/gitPull/')
+    command1 = '/home/opi/Desktop/Python/command.sh'.split()
+    subprocess.call(command1)
     
     return JsonResponse(msg)
 
