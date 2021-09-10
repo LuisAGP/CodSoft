@@ -46,7 +46,7 @@ const ModalMaker = () => {
                     <div className="head">
                         <h4>Modal Example</h4>
 
-                        <a href="#" onClick={openModal}>
+                        <a href="#" className="btn btn-primary" onClick={openModal}>
                             <img src={closeIcon} alt="" />
                         </a>
                         
