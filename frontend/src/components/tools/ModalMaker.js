@@ -35,7 +35,7 @@ const ModalMaker = () => {
 
             <div className="control-panel">
                 <button onClick={openModal}>
-                    Test it
+                    Try it!
                 </button>
             </div>
 
