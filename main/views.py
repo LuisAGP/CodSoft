@@ -11,8 +11,16 @@ def update(request):
 
     msg = {'msg':'done!'}
     #requests.get('http://localhost:8001/gitPull/')
-    command1 = '/home/opi/Desktop/Python/command.sh'.split()
-    subprocess.call(command1)
+    #command1 = '/home/opi/Desktop/Python/command.sh'.split()
+    #subprocess.call(command1)
+    repo = git.Repo("https://github.com/LuisAGP/CodSoft.git")
+    current = repo.head.commit
+    repo.remotes.Origin.pull()
+
+    if current != repo.head.commit:
+        msg = {'msg':'New changes'}
+    else:
+        msg = {"msg":'Nothing change'}
     
     return JsonResponse(msg)
 
