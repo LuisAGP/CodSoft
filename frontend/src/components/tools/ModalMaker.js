@@ -27,6 +27,7 @@ const ModalMaker = () => {
                 <h2>Generate your ideal model!</h2>
             </div>
 
+            <h1>Prueba de servidor</h1>
             <div className="description">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro aut tempore, ut cumque tenetur quis veritatis. Molestias consequuntur soluta, porro veniam iure ab molestiae obcaecati vero, impedit repudiandae at ipsam.</p>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis sed repudiandae amet facilis. Minima eaque in alias ullam. Possimus adipisci dolor accusantium qui corrupti nisi suscipit ullam tempora, itaque perspiciatis.</p>
