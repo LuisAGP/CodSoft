@@ -15,7 +15,7 @@ def update(request):
     #subprocess.call(command1)
     repo = git.Repo("/home/opi/django_project")
     current = repo.head.commit
-    repo.remotes.Origin.pull()
+    repo.remotes.origin.pull()
 
     if current != repo.head.commit:
         msg = {'msg':'New changes'}
