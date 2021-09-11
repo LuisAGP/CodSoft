@@ -13,3 +13,4 @@ class Test(models.Model):
     field2 = models.CharField(max_length=30, null=True)
     field3 = models.CharField(max_length=30, null=True)
     field4 = models.CharField(max_length=40, null=True)
+    field5 = models.CharField(max_length=30, null=True)
