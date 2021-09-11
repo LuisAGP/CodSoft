@@ -13,9 +13,9 @@ def update(request):
     #requests.get('http://localhost:8001/gitPull/')
     #command1 = '/home/opi/Desktop/Python/command.sh'.split()
     #subprocess.call(command1)
-    repo = git.cmd.Git("/home/opi/django_project")
+    repo = git.Repo("https://github.com/LuisAGP/CodSoft.git")
     current = repo.head.commit
-    repo.pull()
+    repo.remotes.Origin.pull()
 
     if current != repo.head.commit:
         msg = {'msg':'New changes'}
