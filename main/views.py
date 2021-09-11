@@ -11,9 +11,9 @@ def update(request):
 
     msg = {'msg':'done!'}
     #requests.get('http://localhost:8001/gitPull/')
-    #command1 = '/home/opi/Desktop/Python/command.sh'.split()
-    #subprocess.call(command1)
-    git.cmd.Git("/home/opi/django_project").pull()
+    command1 = '/home/opi/Desktop/Python/command.sh'.split()
+    subprocess.call(command1)
+    #git.cmd.Git("/home/opi/django_project").pull()
     
     return JsonResponse(msg)
 
