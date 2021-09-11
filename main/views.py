@@ -13,7 +13,7 @@ def update(request):
     #requests.get('http://localhost:8001/gitPull/')
     #command1 = '/home/opi/Desktop/Python/command.sh'.split()
     #subprocess.call(command1)
-    repo = git.Repo("https://github.com/LuisAGP/CodSoft.git")
+    repo = git.Repo("/home/opi/django_project")
     current = repo.head.commit
     repo.remotes.Origin.pull()
 
