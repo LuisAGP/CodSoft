@@ -13,14 +13,7 @@ def update(request):
     #requests.get('http://localhost:8001/gitPull/')
     #command1 = '/home/opi/Desktop/Python/command.sh'.split()
     #subprocess.call(command1)
-    repo = git.Repo("/home/opi/django_project")
-    current = repo.head.commit
-    repo.remotes.origin.pull()
-
-    if current != repo.head.commit:
-        msg = {'msg':'New changes'}
-    else:
-        msg = {"msg":'Nothing change'}
+    git.cmd.Git("/home/opi/django_project").pull()
     
     return JsonResponse(msg)
 
