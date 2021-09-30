@@ -4,8 +4,6 @@ import Header from './Header';
 import '../../static/css/index.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
-import Footer from './Footer';
-import ModalMaker from './tools/ModalMaker';
 
 export default class App extends Component {
     constructor(props) {
@@ -24,13 +22,8 @@ export default class App extends Component {
                             <Home />
                         </Route>
 
-                        <Route path="/modalmaker" >
-                            <ModalMaker />
-                        </Route>
-
                     </Switch>
 
-                    <Footer />
                 </div>
             </Router>
         )

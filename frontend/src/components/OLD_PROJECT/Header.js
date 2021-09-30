@@ -21,20 +21,20 @@ const Header = () => {
             </div>
             
             <div className="options">
+                <Link to="/">Get Started</Link>
                 <Link to="/">Home</Link>
-                <Link to="/">Log in</Link>
             </div>
 
             <div className="menu-tools hide" id="menu" tabIndex="0" onBlur={() => document.getElementById('menu').className="menu-tools hide"}>
-                <h3>{"< OpiCloud />"}</h3>
+                <h3>{"< CODING TOOLS />"}</h3>
 
                 <div className="menu-options">
-                    <Link to="#">Option 1</Link>
-                    <Link to="#">Option 2</Link>
-                    <Link to="#">Option 3</Link>
-                    <Link to="#">Option 4</Link>
-                    <Link to="#">Option 5</Link>
-                    <Link to="#">Option 6</Link>
+                    <Link to="#">Modal Maker</Link>
+                    <Link to="#">Box-Shadow Calculator</Link>
+                    <Link to="#">Button generator</Link>
+                    <Link to="#">General Ajax function</Link>
+                    <Link to="#">Image Reziser</Link>
+                    <Link to="#">Table Generator</Link>
                 </div>
             </div>
         </div>
