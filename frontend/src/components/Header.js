@@ -22,7 +22,7 @@ const Header = () => {
             
             <div className="options">
                 <Link to="/">Home</Link>
-                <Link to="/">Log in</Link>
+                <Link to="/logout/">Logout</Link>
             </div>
 
             <div className="menu-tools hide" id="menu" tabIndex="0" onBlur={() => document.getElementById('menu').className="menu-tools hide"}>

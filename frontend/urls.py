@@ -4,5 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('', index),
-    path('modalmaker/', index)
+    path('login/', index, name='login_page'),
+    path('authentication/', authentication, name="auth"),
+    path('logout/', user_logout, name="user_logout")
 ]

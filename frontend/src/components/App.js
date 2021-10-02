@@ -4,6 +4,7 @@ import Header from './Header';
 import '../../static/css/index.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
+import Login from './Login';
 
 export default class App extends Component {
     constructor(props) {
@@ -20,6 +21,10 @@ export default class App extends Component {
 
                         <Route path="/" exact>
                             <Home />
+                        </Route>
+
+                        <Route path="/login">
+                            <Login />
                         </Route>
 
                     </Switch>
