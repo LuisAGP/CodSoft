@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Header from './Header';
 import '../../static/css/index.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
 import Home from './Home';
 import Login from './Login';
 
@@ -14,22 +15,20 @@ export default class App extends Component {
     render() {
         return (
             <Router>
-                <div>
-                    <Header />
 
-                    <Switch>
+                <Switch>
+                    <PrivateRoute component={Header} path="/" exact />
 
-                        <Route path="/" exact>
-                            <Home />
-                        </Route>
+                    <Route path="/" exact>
+                        <Home />
+                    </Route>
 
-                        <Route path="/login">
-                            <Login />
-                        </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
 
-                    </Switch>
+                </Switch>
 
-                </div>
             </Router>
         )
     }

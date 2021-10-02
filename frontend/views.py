@@ -11,6 +11,8 @@ def index(request, *args, **kwargs):
 
 
 
+
+
 def authentication(request, *args, **kwargs):
 
     response = {}
@@ -37,7 +39,23 @@ def authentication(request, *args, **kwargs):
 
 
 
+
+
+
 def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect(reverse('login_page'))
+
+
+
+
+
+def islogged(request):
+    # Code 0 is not logged
+    # Code 1 is logged
+    response = {'code': 0, 'message': 'The user is no logged'}
+    if request.user is not None:
+        response = {'code': 1, 'message': 'The user is logged'}
+
+    return HttpResponse(json.dumps(response), content_type="application/json")
