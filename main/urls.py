@@ -3,5 +3,5 @@ from main.views import *
 
 urlpatterns = [
     path('', index),
-    path('gitPull/', update)
+    path('gitPull/', update, name="update")
 ]

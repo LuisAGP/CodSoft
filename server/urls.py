@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cdsf/', include('main.urls'), name="gitpull"),
+    path('cdsf/', include('main.urls'), name="main"),
     path('.well-known/pki-validation/8BD1650FB5B2C462D99CF9178633F8A2.txt', TemplateView.as_view(template_name='8BD1650FB5B2C462D99CF9178633F8A2.txt', content_type='text/plain')),
     path('', include('frontend.urls'))
 ]
