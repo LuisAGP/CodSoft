@@ -1,6 +1,6 @@
 import { getCSRF } from './csrftoken'
 
-export const urlBase = "https://codsoft.lhr.rocks/";
+export const urlBase = "https://codsoft.lhr.rocks/"; 
 
 /**
  * Generic Ajax function
