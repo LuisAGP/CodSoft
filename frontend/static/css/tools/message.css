@@ -42,11 +42,22 @@
     height: 100%;
 }
 
-span.info{
+.message-box span{
     width: .3rem;
     height: 100%;
-    background-color: #1976d2;
     border-radius: .3rem;
+}
+
+span.info{
+    background-color: #1976d2;
+}
+
+span.alert{
+    background-color: #ffc300;
+}
+
+span.check{
+    background-color: #28b463;
 }
 
 .message-box img{

@@ -24,8 +24,6 @@ const Login = (props) => {
         setMessage(response.message);
         setMessageStatus('show');
 
-        console.log(response.message);
-
         if (response.logged){
             props.history.push('/')
         }
@@ -35,7 +33,7 @@ const Login = (props) => {
 
     return (
         <div className="login-content">
-            <Message type="info" message={message} status={messageStatus} />
+            <Message type="alert" message={message} status={messageStatus} />
             <form onSubmit={e => userLogin(e)} className="form">
 
                 <div className="login-top">

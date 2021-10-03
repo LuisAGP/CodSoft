@@ -44,7 +44,7 @@ export function fetchData(json){
         });
 
     }catch(error){
-        return {code: 500, message:"Something get wrong!"}
+        return {code: 500, message:error}
     }
 
 }
