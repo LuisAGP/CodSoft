@@ -3,7 +3,7 @@ import '../../static/css/header.css'
 import menuIcon from '../../static/images/menu.svg'
 import {Link} from 'react-router-dom'
 
-const Header = () => {
+const Header = (props) => {
 
 
     const showMenu = () => {
@@ -22,7 +22,7 @@ const Header = () => {
             
             <div className="options">
                 <Link to="/">Home</Link>
-                <Link to="/logout/">Logout</Link>
+                <Link to="#" onClick={e => window.location.href = "/logout"}>Logout</Link>
             </div>
 
             <div className="menu-tools hide" id="menu" tabIndex="0" onBlur={() => document.getElementById('menu').className="menu-tools hide"}>

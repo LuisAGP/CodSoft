@@ -1,7 +1,8 @@
 import React from 'react'
 import { fetchData } from '../tools/app';
+import {withRouter} from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
 
     const userLogin = async(e) => {
         e.preventDefault();
@@ -11,6 +12,10 @@ const Login = () => {
             method: "POST",
             data: new FormData(e.target)
         });
+
+        if (response.logged){
+            props.history.push('/')
+        }
         
     }
 
@@ -29,4 +34,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withRouter(Login)

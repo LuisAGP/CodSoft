@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import Home from './Home';
 import Login from './Login';
+import PublicRoute from './routes/PublicRoute';
 
 export default class App extends Component {
     constructor(props) {
@@ -17,15 +18,9 @@ export default class App extends Component {
             <Router>
 
                 <Switch>
-                    <PrivateRoute component={Header} path="/" exact />
-
-                    <Route path="/" exact>
-                        <Home />
-                    </Route>
-
-                    <Route path="/login">
-                        <Login />
-                    </Route>
+                    
+                    <PublicRoute component={Login} path="/login" exact />
+                    <PrivateRoute component={Home} path="/" exact />
 
                 </Switch>
 

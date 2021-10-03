@@ -1,7 +1,7 @@
 import { getCSRF } from './csrftoken'
 
-//export const urlBase = "https://codsoft.lhr.rocks/"; 
-export const urlBase = "http://localhost:8000/"; 
+export const urlBase = "https://codsoft.lhr.rocks/"; 
+//export const urlBase = "http://localhost:8000/"; 
 
 
 
@@ -11,7 +11,7 @@ export const urlBase = "http://localhost:8000/";
  * @param JSON 
  * @return JSON
  */
-export async function fetchData(json){
+export function fetchData(json){
     try{
 
         var data = "";
@@ -26,7 +26,7 @@ export async function fetchData(json){
         }
         
 
-        return await fetch(
+        return fetch(
             urlBase + json.url,
             {
                 method: json.method,
@@ -36,8 +36,8 @@ export async function fetchData(json){
             }
         )
         .then(res => res.json())
-        .then(data =>{
-            return data;
+        .then(response => {
+            return response;
         })
         .catch(err => {
             console.log(err);
@@ -58,18 +58,25 @@ export async function fetchData(json){
  * @author Luis Godínez
  * @return {Boolean}
  */
-export const isLogged = async () => {
+export const isLogged = () => {
 
     try{
 
-        let response = await fetchData({
-            url: 'islogged/',
-            method: 'GET',
-        });
+        var req = new XMLHttpRequest();
+        req.open('GET', urlBase + 'islogged/', false);
+        req.send(null);
 
-        return response.code === 1 ? true : false;
+
+        if (req.status == 200 && req.readyState == 4){
+            let response = JSON.parse(req.responseText);
+            console.log(response)
+            return response.code === 1 ? true : false;
+        }
+
+        return false;
 
     }catch(error){
+        console.log("Aqui")
         return false;
     }
 

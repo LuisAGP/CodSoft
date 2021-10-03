@@ -1,10 +1,11 @@
 import React from 'react'
+import Layout from './Layout'
 
 const Home = () => {
     return (
-        <div>
-            OpiCloud test
-        </div>
+        <Layout>
+            Here is the home page
+        </Layout>
     )
 }
 
