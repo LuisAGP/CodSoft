@@ -18,7 +18,6 @@ export function fetchData(json){
         if(json.data && json.data instanceof FormData){
             data = json.data;
         }else if(json.data){
-            console.log
             data = new FormData();
             Object.keys(json.data).forEach((key) => {
                 data.append(key, json.data[key]);
@@ -69,14 +68,13 @@ export const isLogged = () => {
 
         if (req.status == 200 && req.readyState == 4){
             let response = JSON.parse(req.responseText);
-            console.log(response)
             return response.code === 1 ? true : false;
         }
 
         return false;
 
     }catch(error){
-        console.log("Aqui")
+        
         return false;
     }
 
