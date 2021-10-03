@@ -27,6 +27,13 @@
     -moz-box-shadow: 2px 4px 24px -1px rgba(0,0,0,0.67);
 }
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .message-box{
+        top: 1rem;
+        max-width: 90%;
+    }
+}
+
 .icon-content{
     display: flex;
     align-items: center;

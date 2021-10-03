@@ -40,7 +40,7 @@ export function fetchData(json){
         })
         .catch(err => {
             console.log(err);
-            return false;
+            return {code: 500, message: err};
         });
 
     }catch(error){
