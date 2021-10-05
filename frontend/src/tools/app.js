@@ -23,6 +23,8 @@ export function fetchData(json){
                 data.append(key, json.data[key]);
             });
         }
+
+        alert(getCSRF());
         
 
         return fetch(
