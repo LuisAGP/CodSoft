@@ -1,9 +1,14 @@
+from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 import json
+
+
+def csrf(request):
+    return HttpResponse(json.dumps({'csrftoken': get_token(request)}), content_type="application/json")
 
 # Create your views here.
 def index(request, *args, **kwargs):

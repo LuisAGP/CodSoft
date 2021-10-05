@@ -11,7 +11,7 @@ export const urlBase = "https://codsoft.lhr.rocks/";
  * @param JSON 
  * @return JSON
  */
-export function fetchData(json){
+export async function fetchData(json){
     try{
 
         var data = "";
@@ -24,7 +24,7 @@ export function fetchData(json){
             });
         }
 
-        alert(getCSRF());
+        alert(await getCSRF());
         
 
         return fetch(
@@ -32,7 +32,7 @@ export function fetchData(json){
             {
                 method: json.method,
                 credentials: "include",
-                headers: { 'X-CSRFToken': getCSRF() },
+                headers: { 'X-CSRFToken': await getCSRF() },
                 body: json.method != "GET" ? data : undefined
             }
         )
