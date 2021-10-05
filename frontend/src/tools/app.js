@@ -23,8 +23,6 @@ export async function fetchData(json){
                 data.append(key, json.data[key]);
             });
         }
-
-        alert(await getCSRF());
         
 
         return fetch(
