@@ -4,12 +4,23 @@ import { isLogged } from '../../tools/app';
 
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
+
+    const [logged, setLogged] = React.useState(null);
+
+    React.useEffect( async() =>{
+        
+        setLogged(await isLogged())
+        
+    }, [setLogged]);
+
     return (
-        <Route {...rest} render={props => (
-            isLogged() ?
-                <Redirect to="/" />
-            : <Component {...props} />
-        )} />
+        logged != null && (
+            <Route {...rest} render={props => (
+                logged === true ?
+                    <Redirect to="/" />
+                : <Component {...props} />
+            )} />
+        )
     )
 }
 

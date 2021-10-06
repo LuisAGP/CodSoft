@@ -4,11 +4,11 @@
     height: 100vh; 
 }
 
-.hide{
+.hide-message{
     display: none;
 }
 
-.show{
+.show-message{
     display: block;
 }
 

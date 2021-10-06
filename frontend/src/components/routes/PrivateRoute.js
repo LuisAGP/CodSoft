@@ -3,13 +3,23 @@ import { Route, Redirect } from 'react-router-dom';
 import { isLogged } from '../../tools/app';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
+
+    const [logged, setLogged] = React.useState(null);
+
+    React.useEffect( async() =>{
+
+        setLogged(await isLogged())
+        
+    }, [setLogged]);
     
     return (
-        <Route {...rest} render={props => (
-            isLogged() == true ?
-                <Component {...props} />
-            : <Redirect to="/login" />
-        )} />
+        logged != null && (
+            <Route {...rest} render={props => (
+                logged === true ?
+                    <Component {...props} />
+                : <Redirect to="/login" />
+            )} />
+        )
     )
 }
 

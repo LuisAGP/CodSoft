@@ -18,7 +18,7 @@ const Message = (props) => {
 
 
     return (
-        <div className={props.status === 'show' ? 'message-panel show' : 'message-panel hide'}>
+        <div className={props.status === 'show' ? 'message-panel show-message' : 'message-panel hide-message'}>
             <div className="message-box">
                 <div className="icon-content">
                     <span className={props.type}></span>

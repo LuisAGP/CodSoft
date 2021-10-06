@@ -49,11 +49,13 @@
 .hide{
     transition: all .5s ease;
     width: 0rem;
+    border: none;
 }
 
 .show{
     transition: all .5s ease;
     width: 19rem;
+    border-right: 1px solid rgb(221, 221, 221);
 }
 
 .menu-tools{
@@ -64,7 +66,6 @@
     height: 100vh;
     z-index: 1;
     background-color: white;
-    border-right: 1px solid rgb(221, 221, 221);
     outline: none;
 }
 
@@ -98,7 +99,8 @@
     overflow: hidden;
     padding: .6rem 1.6rem .6rem 1rem;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: .4rem;
     color: rgb(56, 56, 56);
     font-weight: bold;
@@ -109,6 +111,10 @@
     background-color: #1976d2;
     color: white;
     transform: scale(1.09);
+}
+
+.menu-options svg{
+    margin: 0 1rem 0 .3rem;
 }
 
 

@@ -1,7 +1,7 @@
 import { getCSRF } from './csrftoken'
 
-export const urlBase = "https://codsoft.lhr.rocks/"; 
-//export const urlBase = "http://localhost:8000/"; 
+//export const urlBase = "https://codsoft.lhr.rocks/"; 
+export const urlBase = "http://localhost:8000/"; 
 
 
 
@@ -57,24 +57,18 @@ export async function fetchData(json){
  * @author Luis Godínez
  * @return {Boolean}
  */
-export const isLogged = () => {
+export const isLogged = async () => {
 
     try{
 
-        var req = new XMLHttpRequest();
-        req.open('GET', urlBase + 'islogged/', false);
-        req.send(null);
+        let response = await fetchData({
+            url: 'islogged/',
+            method: 'GET'
+        });
 
-
-        if (req.status == 200 && req.readyState == 4){
-            let response = JSON.parse(req.responseText);
-            return response.code === 1 ? true : false;
-        }
-
-        return false;
+        return await response.code === 1 ? true : false;
 
     }catch(error){
-        
         return false;
     }
 
