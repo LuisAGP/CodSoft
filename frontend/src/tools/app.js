@@ -39,7 +39,6 @@ export async function fetchData(json){
             return response;
         })
         .catch(err => {
-            console.log(err);
             return {code: 500, message: err};
         });
 

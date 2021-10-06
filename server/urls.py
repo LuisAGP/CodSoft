@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon.ico'))),
     path('admin/', admin.site.urls),
     path('cdsf/', include('main.urls'), name="main"),
     path('.well-known/pki-validation/8BD1650FB5B2C462D99CF9178633F8A2.txt', TemplateView.as_view(template_name='8BD1650FB5B2C462D99CF9178633F8A2.txt', content_type='text/plain')),
