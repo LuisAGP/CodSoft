@@ -1,7 +1,7 @@
 import { getCSRF } from './csrftoken'
 
-export const urlBase = "https://codsoft.lhr.rocks/"; 
-//export const urlBase = "http://localhost:8000/"; 
+//export const urlBase = "https://codsoft.lhr.rocks/"; 
+export const urlBase = "http://localhost:8000/"; 
 
 
 

@@ -30,9 +30,19 @@
 .path input:focus{
     background-color: white;
     border: 1px solid rgb(197, 197, 197);
-    color: rgb(138, 138, 138);
+    color: rgb(201, 201, 201);
 }
 
-.setting svg{
+.setting span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    padding: .4rem;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.setting span:hover{
+    background-color: rgb(236, 236, 236);
 }

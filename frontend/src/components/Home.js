@@ -12,7 +12,9 @@ const Home = () => {
                 </div>
 
                 <div className="setting">
-                    <DotsIcon width="20" height="20" />
+                    <span>
+                        <DotsIcon width="20" height="20" />
+                    </span>
                 </div>
             </div>
         </Layout>
