@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Header from './Header';
-import '../../static/css/index.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import Home from './Home';

@@ -63,7 +63,7 @@ const Header = (props) => {
                 <h3><CloudIcon width="50" height="50" fill="#1976d2" /></h3>
 
                 <div className="menu-options">
-                    <Link to="#" 
+                    <Link to="/" 
                         onMouseOver={e => changeColor(e, true)}
                         onMouseOut={e => changeColor(e, false)} 
                     >
