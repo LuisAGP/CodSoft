@@ -1,8 +1,8 @@
 import { getCSRF } from './csrftoken'
 
-export const urlBase = "https://codsoft.lhr.rocks/"; 
-//export const urlBase = "http://localhost:8000/"; 
+let url = window.location.toString();
 
+export const urlBase = url.includes('codsoft.lhr.rocks') ? "https://codsoft.lhr.rocks/" : "http://localhost:8000/"; 
 
 
 /**
