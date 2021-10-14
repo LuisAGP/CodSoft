@@ -1,5 +1,8 @@
 __pycache__/
-migrations/
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+env/
 validation/
 storage/
 node_modules/
