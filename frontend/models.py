@@ -10,6 +10,7 @@ class Folder(models.Model):
     id_user = models.IntegerField()
     folder_name = models.CharField(max_length=255)
     folder_route = models.TextField(null=True, blank=True)
+    favorite = models.BooleanField(default=False)
     create_at = models.DateField(null=True, auto_now_add=True)
     deleted_at = models.DateField(null=True, default=None, blank=True)
 
@@ -37,5 +38,8 @@ class File(models.Model):
     file_extension = models.CharField(max_length=10)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to=user_folder)
+    favorite = models.BooleanField(default=False)
+    create_at = models.DateField(null=True, auto_now_add=True)
+    deleted_at = models.DateField(null=True, default=None, blank=True)
 
 

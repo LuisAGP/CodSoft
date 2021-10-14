@@ -55,19 +55,28 @@
 
 
 .storage-item{
+    width: 8rem;
     padding: .5rem;
     background-color: transparent;
-    border-radius: .5rem;
+    border-radius: .8rem;
     text-align: center;
-}
-
-.storage-item div{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
 }
 
 .storage-item:hover {
     background-color: rgba(77, 77, 77, 0.082);
     cursor: pointer;
+}
+
+
+.storage-item .icon{
+    position: absolute;
+    top: .5rem;
+    right: .8rem;
+}
+
+.folder-info{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -52,22 +52,27 @@ const Home = () => {
             
             <div className="storage-content">
 
-                <div className="storage-item">
-                    <FolderIcon width="80" height="80" fill="#F7DC6F"/>
-                    <div>
-                        <span>Example</span> 
-                        <FillStarIcon width="15" height="15" />
-                    </div>
-                </div>
-
-
-                <div className="storage-item">
-                    <FolderIcon width="80" height="80" fill="#F7DC6F"/>
-                    <div>
-                        <span>Example</span> 
-                        <FillStarIcon width="15" height="15" fill="#FFC700"/>
-                    </div>
-                </div>
+                {
+                    folder != null && (
+                        folder.map((item, index) => {
+                            return (
+                                <div className="storage-item" key={index}>
+                                    {
+                                        item.fields.favorite && (
+                                            <div className="icon">
+                                                <FillStarIcon width="15" height="15" fill="#FFC700"/>
+                                            </div>
+                                        )
+                                    }
+                                    <FolderIcon width="80" height="80" fill="#F7DC6F"/>
+                                    <div className="folder-info">
+                                        <span>{item.fields.folder_name}</span> 
+                                    </div>
+                                </div>
+                            )
+                        })
+                    )
+                }
 
             </div>
 
