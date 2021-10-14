@@ -1,4 +1,5 @@
 import { getCSRF } from './csrftoken'
+import loaderGif from '../../static/images/loader.gif'
 
 let url = window.location.toString();
 
@@ -71,4 +72,35 @@ export const isLogged = async () => {
         return false;
     }
 
+}
+
+
+let buttonLoader;
+
+
+export const setLoader = (button) => {
+
+    buttonLoader = button;
+    button.innerHTML = "";
+    button.style = `background-image: url(${loaderGif});
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;`;
+
+    
+    return false;
+
+}
+
+
+export const removeLoader = (value) => {
+
+    if(buttonLoader){
+        buttonLoader.innerHTML = value;
+        buttonLoader.style = "";
+    }
+
+    buttonLoader = null;
+    
+    return false;
 }

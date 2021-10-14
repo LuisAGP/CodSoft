@@ -1,15 +1,18 @@
 .message-panel{
     position: absolute;
     width: 100%;
-    height: 100vh; 
+    height: 100vh;
 }
 
 .hide-message{
-    display: none;
+    transition: all .6s ease;
+    opacity: 0;
 }
 
 .show-message{
-    display: block;
+    top: -120%;
+    transition: all .6s ease;
+    top: 0rem;
 }
 
 .message-box{

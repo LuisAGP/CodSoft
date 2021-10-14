@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchData } from '../tools/app';
+import { fetchData, setLoader, removeLoader } from '../tools/app';
 import {withRouter} from 'react-router-dom'
 import '../../static/css/login.css';
 import cloudImage from '../../static/images/cloud.jpg';
@@ -20,6 +20,8 @@ const Login = (props) => {
             method: "POST",
             data: new FormData(e.target)
         });
+
+        await response && removeLoader("Login");
 
         setMessage(response.message);
         setMessageStatus('show');
@@ -52,8 +54,9 @@ const Login = (props) => {
                         <input type="password" name="password" placeholder="Password" />
                     </div>
 
-
-                    <input type="submit" value="Login" className="btn-submit"/>
+                    <button type="submit" className="btn-submit" onClick={e => setLoader(e.target)}>
+                        Login
+                    </button> 
                 </div>
 
             </form>

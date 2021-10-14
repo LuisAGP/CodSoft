@@ -7,6 +7,7 @@ import '../../../static/css/tools/message.css'
 const Message = (props) => {
 
     const [icon, setIcon] = React.useState(false);
+    const [status, setStatus] = React.useState('hide');
 
     React.useEffect(() => {
         switch(props.type.toLowerCase()){
@@ -14,11 +15,22 @@ const Message = (props) => {
             case 'alert': setIcon(advertenceIcon); break;
             case 'check': setIcon(checkIcon); break;
         }
-    }, [props.type])
 
+
+        setStatus(props.status);
+
+    }, [props])
+
+
+    if(status == "show"){
+        setInterval(() => {
+            setStatus('hide')
+        }, 2000);
+        window.clearInterval();
+    }
 
     return (
-        <div className={props.status === 'show' ? 'message-panel show-message' : 'message-panel hide-message'}>
+        <div className={status === 'show' ? 'message-panel show-message' : 'message-panel hide-message'}>
             <div className="message-box">
                 <div className="icon-content">
                     <span className={props.type}></span>
