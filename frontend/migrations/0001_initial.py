@@ -35,21 +35,4 @@ class Migration(migrations.Migration):
                 ('deleted_at', models.DateField(default=None, null=True)),
             ],
         ),
-        migrations.CreateModel(
-            name='Test',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('id_test', models.IntegerField()),
-                ('a', models.CharField(max_length=30, null=True)),
-                ('aa', models.CharField(max_length=30, null=True)),
-                ('b', models.CharField(max_length=30, null=True)),
-                ('bb', models.CharField(max_length=30, null=True)),
-                ('c', models.CharField(max_length=30, null=True)),
-                ('field', models.CharField(max_length=30, null=True)),
-                ('field2', models.CharField(max_length=30, null=True)),
-                ('field3', models.CharField(max_length=30, null=True)),
-                ('field4', models.CharField(max_length=40, null=True)),
-                ('field5', models.CharField(max_length=30, null=True)),
-            ],
-        ),
     ]
