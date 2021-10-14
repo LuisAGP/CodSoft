@@ -40,7 +40,7 @@ const Home = () => {
         <Layout>
             <div className="panel-tools">
                 <div className="path" id="cloud-path">
-                    <input type="text" defaultValue="./Home/Folder"/>
+                    <input type="text" defaultValue="./"/>
                 </div>
 
                 <div className="setting">
