@@ -35,7 +35,6 @@ class Migration(migrations.Migration):
                 ('deleted_at', models.DateField(default=None, null=True)),
             ],
         ),
-<<<<<<< HEAD
         migrations.CreateModel(
             name='Test',
             fields=[
@@ -53,6 +52,4 @@ class Migration(migrations.Migration):
                 ('field5', models.CharField(max_length=30, null=True)),
             ],
         ),
-=======
->>>>>>> 77290981ce3beebf10474ea10e8bb289cad11680
     ]
