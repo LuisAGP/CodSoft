@@ -10,9 +10,14 @@ from django.core import serializers
 
 from frontend.models import Folder
 
-
+# Function for get csrf token
+# @author Luis GP
+# @return json
 def csrf(request):
     return HttpResponse(json.dumps({'csrftoken': get_token(request)}), content_type="application/json")
+
+
+
 
 # Create your views here.
 def index(request, *args, **kwargs):
@@ -21,7 +26,9 @@ def index(request, *args, **kwargs):
 
 
 
-
+# This function recibes the user information and login to system
+# @author Luis GP
+# @return JSON
 def authentication(request, *args, **kwargs):
 
     response = {}
@@ -49,13 +56,10 @@ def authentication(request, *args, **kwargs):
 
 
 
-
-
 def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect(reverse('login_page'))
-
 
 
 
@@ -68,7 +72,6 @@ def islogged(request):
         response = {'code': 1, 'message': 'The user is logged'}
 
     return HttpResponse(json.dumps(response), content_type="application/json")
-
 
 
 
