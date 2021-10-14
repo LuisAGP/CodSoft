@@ -1,0 +1,16 @@
+Requirements:
+
+Python 3.6 or newer
+python3 -m pip install Django
+pip3 install django-cors-headers
+pip3 install requests
+
+Node.js
+npm install --save-dev @babel/core
+
+
+::::::::::::::::::::::::::::: NOTE ::::::::::::::::::::::::::::::
+::: After install all the requirements restore git files      :::
+::: don't push that changes, because probably changes include :::
+::: different versions in package.json and server could die   :::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
