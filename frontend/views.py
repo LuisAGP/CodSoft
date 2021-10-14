@@ -1,3 +1,4 @@
+from django.core.checks import messages
 from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
@@ -5,6 +6,9 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 import json
+from django.core import serializers
+
+from frontend.models import Folder
 
 
 def csrf(request):
@@ -64,3 +68,25 @@ def islogged(request):
         response = {'code': 1, 'message': 'The user is logged'}
 
     return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+
+
+
+def getFolders(request):
+
+    response = {}
+    
+    if request.method == "POST" and 'id_folder' in request.POST:
+
+        if request.POST['id_folder'] != "null":
+            folders = Folder.objects.filter(id_parent_folder=request.POST['id_folder'], deleted_at=None)
+        else:
+            folders = Folder.objects.filter(id_parent_folder=None, deleted_at=None)
+        
+        response = serializers.serialize('json', folders)
+    else:
+        response = {"status": 200, "message": "Invalid data!"}
+
+
+    return HttpResponse(response, content_type="application/json")

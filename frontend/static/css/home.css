@@ -46,3 +46,28 @@
 .setting span:hover{
     background-color: rgb(236, 236, 236);
 }
+
+.storage-content{
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+
+.storage-item{
+    padding: .5rem;
+    background-color: transparent;
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.storage-item div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.storage-item:hover {
+    background-color: rgba(77, 77, 77, 0.082);
+    cursor: pointer;
+}
