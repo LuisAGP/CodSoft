@@ -8,5 +8,6 @@ urlpatterns = [
     path('authentication/', authentication, name="auth"),
     path('logout/', user_logout, name="user_logout"),
     path('islogged/', islogged, name="islogged"),
-    path('getCSRFToken/', csrf, name="csrf")
+    path('getCSRFToken/', csrf, name="csrf"),
+    path('getFolders/', getFolders)
 ]

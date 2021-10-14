@@ -1,6 +1,10 @@
 __pycache__/
-migrations/
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+env/
 validation/
+storage/
 node_modules/
 frontend/static/frontend/main.js
 server/dbconnection.py

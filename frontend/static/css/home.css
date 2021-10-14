@@ -46,3 +46,37 @@
 .setting span:hover{
     background-color: rgb(236, 236, 236);
 }
+
+.storage-content{
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+
+.storage-item{
+    width: 8rem;
+    padding: .5rem;
+    background-color: transparent;
+    border-radius: .8rem;
+    text-align: center;
+    position: relative;
+}
+
+.storage-item:hover {
+    background-color: rgba(77, 77, 77, 0.082);
+    cursor: pointer;
+}
+
+
+.storage-item .icon{
+    position: absolute;
+    top: .5rem;
+    right: .8rem;
+}
+
+.folder-info{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
