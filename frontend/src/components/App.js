@@ -5,6 +5,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import Home from './Home';
 import Login from './Login';
 import PublicRoute from './routes/PublicRoute';
+import { ShowMessageProvideer } from './context/MessageProvideer';
 
 export default class App extends Component {
     constructor(props) {
@@ -13,16 +14,18 @@ export default class App extends Component {
 
     render() {
         return (
-            <Router>
+            <ShowMessageProvideer >
+                <Router>
 
-                <Switch>
-                    
-                    <PublicRoute component={Login} path="/login" exact />
-                    <PrivateRoute component={Home} path="/" exact />
+                    <Switch>
+                        
+                        <PublicRoute component={Login} path="/login" exact />
+                        <PrivateRoute component={Home} path="/" exact />
 
-                </Switch>
+                    </Switch>
 
-            </Router>
+                </Router>
+            </ShowMessageProvideer>
         )
     }
 }

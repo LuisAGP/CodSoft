@@ -21,14 +21,6 @@ const Message = (props) => {
 
     }, [props])
 
-
-    if(status == "show"){
-        setInterval(() => {
-            setStatus('hide')
-        }, 2000);
-        window.clearInterval();
-    }
-
     return (
         <div className={status === 'show' ? 'message-panel show-message' : 'message-panel hide-message'}>
             <div className="message-box">

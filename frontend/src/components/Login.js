@@ -6,11 +6,12 @@ import cloudImage from '../../static/images/cloud.jpg';
 import userIcon from '../../static/images/user.svg'
 import pwdIcon from '../../static/images/lock.svg'
 import Message from './utils/Message';
+import { showMessage } from './context/MessageProvideer';
 
 const Login = (props) => {
 
+    const {status, setStatus} = React.useContext(showMessage);
     const [message, setMessage] = React.useState("");
-    const [messageStatus, setMessageStatus] = React.useState('hide');
 
     const userLogin = async(e) => {
         e.preventDefault();
@@ -24,9 +25,8 @@ const Login = (props) => {
         await response && removeLoader("Login");
 
         setMessage(response.message);
-        setMessageStatus('show');
+        setStatus('show');
 
-        console.log(Message)
         if (response.logged){
             props.history.push('/');
         }
@@ -36,7 +36,7 @@ const Login = (props) => {
 
     return (
         <div className="login-content">
-            <Message type="alert" message={message} status={messageStatus} />
+            <Message type="alert" message={message} status={status} />
             <form onSubmit={e => userLogin(e)} className="form">
 
                 <div className="login-top">
