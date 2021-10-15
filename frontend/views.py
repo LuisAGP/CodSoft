@@ -82,12 +82,12 @@ def getFolders(request):
 
     response = {}
     
-    if request.method == "POST" and 'id_folder' in request.POST:
+    if request.method == "POST" and 'route' in request.POST:
 
-        if request.POST['id_folder'] != "null":
-            folders = Folder.objects.filter(id_parent_folder=request.POST['id_folder'], deleted_at=None)
+        if request.POST['route'] != "null":
+            folders = Folder.objects.filter(folder_route=request.POST['route'], deleted_at=None)
         else:
-            folders = Folder.objects.filter(id_parent_folder=None, deleted_at=None)
+            folders = Folder.objects.filter(folder_route='./', deleted_at=None)
         
         response = serializers.serialize('json', folders)
     else:
