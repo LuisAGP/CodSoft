@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from .views import *
 
 urlpatterns = [
@@ -9,5 +8,6 @@ urlpatterns = [
     path('logout/', user_logout, name="user_logout"),
     path('islogged/', islogged, name="islogged"),
     path('getCSRFToken/', csrf, name="csrf"),
-    path('getFolders/', getFolders)
+    path('getFolders/', getFolders),
+    path('uploadFiles/', uploadFiles)
 ]

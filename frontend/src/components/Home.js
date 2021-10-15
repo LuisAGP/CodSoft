@@ -36,6 +36,52 @@ const Home = () => {
 
     }, []);
 
+
+
+    const openFolder = (e) => {
+        let id_folder = e.currentTarget.dataset.id_folder;
+        setCurrentRoute(id_folder);
+        updateDirectory(id_folder)
+    }
+
+
+
+    const settings = () => {
+        let menu = document.getElementById("menu-settings");
+        let span = menu.previousSibling;
+
+        if (menu.className.includes("hidden")) {
+            menu.className = menu.className.replace('hidden', '');
+            menu.focus();
+            span.className = "btn-active";
+        }else{
+            menu.className += 'hidden';
+            span.className = "";
+        }
+    }
+
+
+
+    const uploadFiles = async(e) => {
+        if (!e) { return false; }
+
+        let data = e.target.files;
+        data['id_folder'] = currentRoute;
+
+        let response = fetchData({
+            url: 'uploadFiles/',
+            method: 'POST',
+            data: data
+        })
+
+        console.log(await response);
+    }
+
+
+
+
+
+
     return (
         <Layout>
             <div className="panel-tools">
@@ -44,9 +90,20 @@ const Home = () => {
                 </div>
 
                 <div className="setting">
-                    <span>
-                        <DotsIcon width="20" height="20" />
-                    </span>
+                    <div>
+                        <span onClick={settings}>
+                            <DotsIcon width="20" height="20" />
+                        </span>
+
+                        <div className="menu-settings hidden" tabIndex="1" id="menu-settings" onBlur={settings}>
+                            <p>New folder</p>
+                            <p>
+                                <a onClick={e => e.target.nextSibling.click()}>Upload files</a>
+                                <input type="file" multiple onChange={e => uploadFiles(e)}/>
+                            </p>
+                            <p>More</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -56,7 +113,12 @@ const Home = () => {
                     folder != null && (
                         folder.map((item, index) => {
                             return (
-                                <div className="storage-item" key={index}>
+                                <div 
+                                    className="storage-item" 
+                                    key={index}
+                                    data-id_folder={item.pk}
+                                    onClick={e => openFolder(e)}
+                                >
                                     {
                                         item.fields.favorite && (
                                             <div className="icon">
