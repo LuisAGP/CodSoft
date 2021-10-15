@@ -26,8 +26,9 @@ const Login = (props) => {
         setMessage(response.message);
         setMessageStatus('show');
 
+        console.log(Message)
         if (response.logged){
-            props.history.push('/')
+            props.history.push('/');
         }
         
     }
