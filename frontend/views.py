@@ -1,4 +1,6 @@
 from django.core.checks import messages
+from django.db.models.query_utils import PathInfo
+from django.http import response
 from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
@@ -8,7 +10,7 @@ from django.urls import reverse
 import json
 from django.core import serializers
 
-from frontend.models import Folder
+from frontend.models import *
 
 # Function for get csrf token
 # @author Luis GP
@@ -93,3 +95,32 @@ def getFolders(request):
 
 
     return HttpResponse(response, content_type="application/json")
+
+
+
+
+
+def uploadFiles(request):
+    response = {}
+
+    try:
+        if request.user is not None:
+            for index, filename in request.FILES.items():
+                file = request.FILES[index]
+                f = File()
+
+                f.id_folder = request.POST['id_folder']
+                f.id_user = request.user.id
+                f.file_extension = str(filename).split('.')[-1]
+                f.file_name = filename
+                f.file = file
+
+                f.save()
+
+        
+        response = {'status': 200, 'message': 'Files has been uploaded!'}
+    except:
+        response = {'status': 500, 'message': 'Cannot upload files!'}
+
+
+    return HttpResponse(json.dumps(response), content_type="application/json")
