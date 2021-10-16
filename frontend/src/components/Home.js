@@ -118,7 +118,6 @@ const Home = () => {
 
         }
 
-        console.log(response);
     }
 
 
