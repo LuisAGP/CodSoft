@@ -10,9 +10,20 @@ input[type="file"]{
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 
+.directory{
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+
+.back-row{
+    cursor: pointer;
+    margin-right: .5rem;
+}
+
 .path{
     height: 2rem;
-    width: 70%;
+    width: 90%;
 }
 
 .path input{
