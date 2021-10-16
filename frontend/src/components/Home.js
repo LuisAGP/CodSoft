@@ -39,6 +39,20 @@ const Home = () => {
     }
 
 
+    const backDirectory = () => {
+        let route = previousRoute;
+        route += route != null && route[route.length-1] != "/" ? '/' : '';
+
+        let prevRoute = route.split('/');
+        prevRoute = prevRoute.slice(0, prevRoute.length-2);
+
+        updateDirectory(route);
+        setCurrentRoute(route);
+
+        prevRoute.length > 0 && setPreviousRoute(prevRoute.join('/')+"/")
+    }
+
+
     
     React.useEffect(() => {
         updateDirectory();
@@ -53,7 +67,6 @@ const Home = () => {
         setCurrentRoute(route);
         setPreviousRoute(prevRoute);
         updateDirectory(route);
-        console.log(prevRoute);
     }
 
 
@@ -119,7 +132,7 @@ const Home = () => {
 
 
                 <div className="directory">
-                    <div className="back-row" onClick={e => updateDirectory(previousRoute)}>
+                    <div className="back-row" onClick={backDirectory}>
                         <LeftRowIcon width="35" height="35" fill="#4C6F93" />
                     </div>
                     
