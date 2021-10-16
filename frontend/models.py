@@ -35,6 +35,7 @@ class File(models.Model):
     id_file = models.AutoField(primary_key=True)
     id_folder = models.IntegerField(null=True, blank=True)
     id_user = models.IntegerField()
+    file_route = models.TextField(null=True, blank=True)
     file_extension = models.CharField(max_length=10)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to=user_folder)

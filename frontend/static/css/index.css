@@ -9,9 +9,9 @@ html{
 }
 
 .body{
-    margin: 0;
-    padding: 3.5rem 0 0 0;
+    margin: 3.5rem 0 0 0;
     font-family: 'Open Sans', sans-serif;
+    position: relative;
 }
 
 img{

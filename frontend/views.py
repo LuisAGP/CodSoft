@@ -1,4 +1,5 @@
 from django.core.checks import messages
+from django.db import router
 from django.db.models.query_utils import PathInfo
 from django.http import response
 from django.middleware.csrf import get_token
@@ -78,23 +79,41 @@ def islogged(request):
 
 
 
-def getFolders(request):
+def getDirectory(request):
 
     response = {}
     
     if request.method == "POST" and 'route' in request.POST:
+        
+        id_current_folder = None
 
         if request.POST['route'] != "null":
+            route = str(request.POST['route']).split('/')
+            
+            folder_route = '/'.join(route[:-2]) + "/"
+            folder_name = route[-2]
+
+            current_folder = Folder.objects.filter(folder_name=folder_name, folder_route=folder_route)
+            if current_folder:
+                id_current_folder = current_folder[0].id_folder
+
             folders = Folder.objects.filter(folder_route=request.POST['route'], deleted_at=None)
+            files = File.objects.filter(file_route=request.POST['route'], deleted_at=None)
+
         else:
             folders = Folder.objects.filter(folder_route='./', deleted_at=None)
+            files = File.objects.filter(file_route='./', deleted_at=None)
         
-        response = serializers.serialize('json', folders)
+        folders = serializers.serialize('json', folders)
+        files = serializers.serialize('json', files)
+
+        response = {'files': files, 'folders': folders, 'id_current_folder': id_current_folder}
+
     else:
         response = {"status": 200, "message": "Invalid data!"}
 
 
-    return HttpResponse(response, content_type="application/json")
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 
@@ -110,6 +129,7 @@ def uploadFiles(request):
                 f = File()
 
                 f.id_folder = request.POST['id_folder']
+                f.file_route = request.POST['route']
                 f.id_user = request.user.id
                 f.file_extension = str(filename).split('.')[-1]
                 f.file_name = filename

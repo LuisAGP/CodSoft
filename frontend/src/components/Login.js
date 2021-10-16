@@ -10,8 +10,7 @@ import { showMessage } from './context/MessageProvideer';
 
 const Login = (props) => {
 
-    const {status, setStatus} = React.useContext(showMessage);
-    const [message, setMessage] = React.useState("");
+    const {alert, setAlert} = React.useContext(showMessage);
 
     const userLogin = async(e) => {
         e.preventDefault();
@@ -22,13 +21,21 @@ const Login = (props) => {
             data: new FormData(e.target)
         });
 
-        await response && removeLoader("Login");
-
-        setMessage(response.message);
-        setStatus('show');
+        response && removeLoader("Login");
 
         if (response.logged){
+            setAlert({
+                type: 'check',
+                status: 'show',
+                message: response.message
+            });
             props.history.push('/');
+        }else{
+            setAlert({
+                type: 'alert',
+                status: 'show',
+                message: response.message
+            });
         }
         
     }
@@ -36,7 +43,7 @@ const Login = (props) => {
 
     return (
         <div className="login-content">
-            <Message type="alert" message={message} status={status} />
+            <Message type={alert.type} message={alert.message} status={alert.status} />
             <form onSubmit={e => userLogin(e)} className="form">
 
                 <div className="login-top">

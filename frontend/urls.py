@@ -8,6 +8,6 @@ urlpatterns = [
     path('logout/', user_logout, name="user_logout"),
     path('islogged/', islogged, name="islogged"),
     path('getCSRFToken/', csrf, name="csrf"),
-    path('getFolders/', getFolders),
+    path('getDirectory/', getDirectory),
     path('uploadFiles/', uploadFiles)
 ]
