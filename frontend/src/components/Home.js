@@ -40,9 +40,7 @@ const Home = () => {
 
     
     React.useEffect(() => {
-
         updateDirectory();
-
     }, []);
 
 
@@ -116,8 +114,8 @@ const Home = () => {
             <div className="panel-tools">
                 <div className="path" id="cloud-path">
                     <input 
+                        type="text"
                         data-id_folder={currentFolder}
-                        type="text" 
                         value={currentRoute} 
                         onChange={e => setCurrentRoute(e.target.value)}
                         onBlur={e => updateDirectory(e.target.value)}

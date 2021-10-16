@@ -4,11 +4,13 @@
     left: 0;
     right: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .hide-message{
     transition: all .6s ease;
     opacity: 0;
+    z-index: -1;
 }
 
 .show-message{
