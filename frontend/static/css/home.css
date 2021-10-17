@@ -10,9 +10,23 @@ input[type="file"]{
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 
+.directory{
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+
+.back-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: .3rem;
+}
+
 .path{
     height: 2rem;
-    width: 70%;
+    width: 90%;
 }
 
 .path input{
@@ -89,6 +103,13 @@ input[type="file"]{
     padding: 2rem 3rem;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .storage-content{
+        padding: 2rem .5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 

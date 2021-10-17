@@ -6,11 +6,12 @@ import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
 import { fetchData } from '../tools/app';
 import { showMessage } from './context/MessageProvideer';
+import LeftRowIcon from './icons/LeftRowIcon';
 
 const Home = () => {
 
     const {alert, setAlert} = React.useContext(showMessage);
-
+    const [previousRoute, setPreviousRoute] = React.useState("./");
     const [currentRoute, setCurrentRoute] = React.useState("./");
     const [currentFolder, setCurrentFolder] = React.useState("");
     const [folder, setFolder] = React.useState(null);
@@ -38,6 +39,20 @@ const Home = () => {
     }
 
 
+    const backDirectory = () => {
+        let route = previousRoute;
+        route += route != null && route[route.length-1] != "/" ? '/' : '';
+
+        let prevRoute = route.split('/');
+        prevRoute = prevRoute.slice(0, prevRoute.length-2);
+
+        updateDirectory(route);
+        setCurrentRoute(route);
+
+        prevRoute.length > 0 && setPreviousRoute(prevRoute.join('/')+"/")
+    }
+
+
     
     React.useEffect(() => {
         updateDirectory();
@@ -47,8 +62,10 @@ const Home = () => {
 
     const openFolder = (e) => {
         let route = e.currentTarget.dataset.route;
+        let prevRoute = e.currentTarget.dataset.folder_route;
 
         setCurrentRoute(route);
+        setPreviousRoute(prevRoute);
         updateDirectory(route);
     }
 
@@ -101,7 +118,6 @@ const Home = () => {
 
         }
 
-        console.log(response);
     }
 
 
@@ -112,16 +128,24 @@ const Home = () => {
     return (
         <Layout>
             <div className="panel-tools">
-                <div className="path" id="cloud-path">
-                    <input 
-                        type="text"
-                        data-id_folder={currentFolder}
-                        value={currentRoute} 
-                        onChange={e => setCurrentRoute(e.target.value)}
-                        onBlur={e => updateDirectory(e.target.value)}
-                        onKeyUp={e => e.keyCode === 13 && updateDirectory(e.target.value)} 
-                        id="route-field"
-                    />
+
+
+                <div className="directory">
+                    <div className="back-row" onClick={backDirectory}>
+                        <LeftRowIcon width="35" height="35" fill="#4C6F93" />
+                    </div>
+                    
+                    <div className="path" id="cloud-path">
+                        <input 
+                            type="text"
+                            data-id_folder={currentFolder}
+                            value={currentRoute} 
+                            onChange={e => setCurrentRoute(e.target.value)}
+                            onBlur={e => updateDirectory(e.target.value)}
+                            onKeyUp={e => e.keyCode === 13 && updateDirectory(e.target.value)} 
+                            id="route-field"
+                        />
+                    </div>
                 </div>
 
                 <div className="setting">
@@ -153,6 +177,7 @@ const Home = () => {
                                     key={index}
                                     data-route={item.fields.folder_route+item.fields.folder_name+"/"}
                                     data-id_folder={item.pk}
+                                    data-folder_route={item.fields.folder_route}
                                     onClick={e => openFolder(e)}
                                 >
                                     {
