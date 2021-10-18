@@ -72,16 +72,19 @@ const Home = () => {
 
 
     const settings = () => {
+
         let menu = document.getElementById("menu-settings");
-        let span = menu.previousSibling;
+        let btn = menu.previousSibling;
 
         if (menu.className.includes("hidden")) {
             menu.className = menu.className.replace('hidden', '');
             menu.focus();
-            span.className = "btn-active";
+            btn.className = "btn-settings btn-active";
+            btn.style.pointerEvents = "none";
         }else{
-            menu.className += 'hidden';
-            span.className = "";
+            menu.className = 'menu-settings hidden';
+            btn.className = "btn-settings";
+            btn.style = "";
         }
     }
 
@@ -150,9 +153,9 @@ const Home = () => {
 
                 <div className="setting">
                     <div>
-                        <span onClick={settings}>
+                        <button onClick={settings} className="btn-settings" type="button">
                             <DotsIcon width="20" height="20" />
-                        </span>
+                        </button>
 
                         <div className="menu-settings hidden" tabIndex="1" id="menu-settings" onBlur={settings}>
                             <p>New folder</p>
