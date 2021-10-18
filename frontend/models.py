@@ -21,7 +21,7 @@ class Folder(models.Model):
 def user_folder(instance, filename):
 
     user = User.objects.get(pk=instance.id_user)
-    folder = Folder.objects.get(pk=instance.id_folder)
+    folder = Folder.objects.filter(pk=instance.id_folder).first()
 
     if folder:
         url = str(folder.folder_route).replace("./", '') + folder.folder_name

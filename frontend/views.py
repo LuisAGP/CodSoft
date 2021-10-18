@@ -126,12 +126,13 @@ def uploadFiles(request):
         if request.user is not None:
             for index, filename in request.FILES.items():
 
-                folder = Folder.objects.get(pk=request.POST['id_folder'])
-
                 file = request.FILES[index]
                 f = File()
 
-                f.id_folder = request.POST['id_folder']
+                id_folder = request.POST['id_folder'] if request.POST['id_folder'] != 'null' else None
+                folder = Folder.objects.filter(id_folder=id_folder).first()
+
+                f.id_folder = id_folder
                 f.file_route = request.POST['route']
                 f.id_user = request.user.id
                 f.file_extension = str(filename).split('.')[-1]
