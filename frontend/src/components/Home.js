@@ -31,7 +31,6 @@ const Home = () => {
             }
         })
 
-        console.log(data)
         setFolder(JSON.parse(data.folders));
         setFile(JSON.parse(data.files));
         setCurrentFolder(data.id_current_folder);
