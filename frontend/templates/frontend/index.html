@@ -18,10 +18,6 @@
         </div>
 
         {% csrf_token %}
-        <script>
-            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        </script>
-
         <script src="{% static 'frontend/main.js' %}" ></script>
     </body>
 </html>

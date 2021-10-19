@@ -17,13 +17,12 @@ import unknowIcon from '../../static/images/icons/file.svg'
 
 const Home = () => {
 
-    const {alert, setAlert} = React.useContext(showMessage);
+    const {setAlert} = React.useContext(showMessage);
     const [previousRoute, setPreviousRoute] = React.useState("./");
     const [currentRoute, setCurrentRoute] = React.useState("./");
     const [currentFolder, setCurrentFolder] = React.useState("");
     const [folder, setFolder] = React.useState(null);
     const [file, setFile] = React.useState(null);
-
 
 
     const updateDirectory = async(route=null) => {
@@ -58,12 +57,6 @@ const Home = () => {
 
         prevRoute.length > 0 && setPreviousRoute(prevRoute.join('/')+"/")
     }
-
-
-    
-    React.useEffect(() => {
-        updateDirectory();
-    }, []);
 
 
 
@@ -144,8 +137,9 @@ const Home = () => {
     }
 
 
-
-
+    React.useEffect(() => {
+        updateDirectory();
+    }, []);
 
 
     return (
