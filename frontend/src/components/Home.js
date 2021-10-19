@@ -228,7 +228,12 @@ const Home = () => {
                                     }
                                     {/*I******************************************** IMG FILE **********************************************/}
                                     { 
-                                        isImage(item.fields.file_extension) && <img src={item.fields.file_url} alt="IMAGE" className={item.fields.orientation} /> 
+                                        isImage(item.fields.file_extension) && <img 
+                                                                                    decoding="async" 
+                                                                                    src={item.fields.prefix_url+item.fields.file} 
+                                                                                    alt="IMAGE" 
+                                                                                    className={item.fields.orientation}
+                                                                                /> 
                                     }
                                     {/*E******************************************** IMG FILE **********************************************/}
 
@@ -236,7 +241,7 @@ const Home = () => {
                                     {/*I******************************************** PDF FILE **********************************************/}
                                     {
                                         item.fields.file_extension.toLowerCase() == "pdf" && <>
-                                            <img src={pdfIcon} alt="PDF" className="doc" />
+                                            <img decoding="async" src={pdfIcon} alt="PDF" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -248,7 +253,7 @@ const Home = () => {
                                     {/*I******************************************* EXCEL FILE *********************************************/}
                                     {
                                         ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img src={excelIcon} alt="XLS" className="doc" />
+                                            <img decoding="async" src={excelIcon} alt="XLS" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -260,7 +265,7 @@ const Home = () => {
                                     {/*I******************************************** DOC FILE **********************************************/}
                                     {
                                         ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img src={docIcon} alt="DOC" className="doc" />
+                                            <img decoding="async" src={docIcon} alt="DOC" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -272,7 +277,7 @@ const Home = () => {
                                     {/*I**************************************** POWERPOINT FILE *******************************************/}
                                     {
                                         ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img src={powerpointIcon} alt="PTT" className="doc" />
+                                            <img decoding="async" src={powerpointIcon} alt="PTT" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -284,7 +289,7 @@ const Home = () => {
                                     {/*I***************************************** ZIP, RAR FILES *******************************************/}
                                     {
                                         ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img src={winrarIcon} alt="winrar" className="doc" />
+                                            <img decoding="async" src={winrarIcon} alt="winrar" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -296,7 +301,7 @@ const Home = () => {
                                     {/*I****************************************** UNKNOWN FILES *******************************************/}
                                     {
                                         isUnknown(item.fields.file_extension.toLowerCase()) && <>
-                                            <img src={unknowIcon} alt="Unknown" className="doc" />
+                                            <img decoding="async" src={unknowIcon} alt="Unknown" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>

@@ -40,7 +40,7 @@ class File(models.Model):
     file_extension = models.CharField(max_length=10)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to=user_folder)
-    file_url = models.TextField(null=True, blank=True)
+    prefix_url = models.CharField(max_length=10, null=True, blank=True, default="/media/")
     img_width = models.CharField(max_length=255, null=True, blank=True, default='0')
     img_height = models.CharField(max_length=255, null=True, blank=True, default='0')
     orientation = models.CharField(max_length=5, null=True, blank=True, default='h')
