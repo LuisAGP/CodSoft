@@ -110,7 +110,7 @@ export const removeLoader = (value) => {
 export const isImage = (value) => {
     let array = [
         'jpg',
-        'jpge',
+        'jpeg',
         'png',
         'gif',
         'svg'
@@ -125,7 +125,7 @@ export const isUnknown = (value) => {
     
     let array = [
         'jpg',
-        'jpge',
+        'jpeg',
         'png',
         'gif',
         'svg',

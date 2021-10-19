@@ -104,7 +104,7 @@ input[type="file"]{
 .storage-content{
     padding: 2rem 3rem;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -123,6 +123,7 @@ input[type="file"]{
     border-radius: .8rem;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 .storage-item:hover {
