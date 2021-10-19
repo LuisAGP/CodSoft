@@ -38,7 +38,7 @@ const Home = () => {
             }
         })
 
-        console.log(JSON.parse(data.files));
+
         setFolder(JSON.parse(data.folders));
         setFile(JSON.parse(data.files));
         setCurrentFolder(data.id_current_folder);
@@ -74,6 +74,16 @@ const Home = () => {
         setCurrentRoute(route);
         setPreviousRoute(prevRoute);
         updateDirectory(route);
+    }
+
+
+
+    const checkRoute = (input) => {
+
+        let route = input.value !== "" ? input.value : './';
+        setCurrentRoute(route);
+        updateDirectory(route);
+        
     }
 
 
@@ -154,8 +164,8 @@ const Home = () => {
                             data-id_folder={currentFolder}
                             value={currentRoute} 
                             onChange={e => setCurrentRoute(e.target.value)}
-                            onBlur={e => updateDirectory(e.target.value)}
-                            onKeyUp={e => e.keyCode === 13 && updateDirectory(e.target.value)} 
+                            onBlur={e => checkRoute(e.currentTarget)}
+                            onKeyUp={e => e.keyCode === 13 && checkRoute(e.currentTarget)}
                             id="route-field"
                         />
                     </div>
