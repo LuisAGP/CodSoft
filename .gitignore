@@ -3,6 +3,7 @@ __pycache__/
 !**/migrations
 !**/migrations/__init__.py
 env/
+frontend/static/media/storage/
 validation/
 node_modules/
 frontend/static/frontend/main.js
