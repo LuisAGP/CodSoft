@@ -1,13 +1,10 @@
-from django.core.checks import messages
-from django.db import router
-from django.db.models.query_utils import PathInfo
-from django.http import response
 from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.core.files.images import get_image_dimensions
 import json
 from django.core import serializers
 
@@ -131,11 +128,12 @@ def uploadFiles(request):
 
                 id_folder = request.POST['id_folder'] if request.POST['id_folder'] != 'null' else None
                 folder = Folder.objects.filter(id_folder=id_folder).first()
+                extension = str(filename).split('.')[-1]
 
                 f.id_folder = id_folder
                 f.file_route = request.POST['route']
                 f.id_user = request.user.id
-                f.file_extension = str(filename).split('.')[-1]
+                f.file_extension = extension
                 f.file_name = filename
                 f.file = file
 
@@ -145,6 +143,17 @@ def uploadFiles(request):
                 else:
                     f.file_url = f'/media/storage/{request.user}/{filename}'
 
+
+                if extension in ['jpg','jpge','png','gif']:
+                    width, height = get_image_dimensions(file)
+                    f.img_width = width
+                    f.img_height = height
+
+                    if height > width:
+                        f.orientation = "v"
+                    else:
+                        f.orientation = "h"
+                    
                 f.save()
 
         

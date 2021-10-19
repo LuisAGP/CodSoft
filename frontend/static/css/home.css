@@ -116,6 +116,7 @@ input[type="file"]{
 
 .storage-item{
     width: 8rem;
+    height: 8rem;
     padding: .5rem;
     background-color: transparent;
     border-radius: .8rem;
@@ -139,4 +140,19 @@ input[type="file"]{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.storage-item img{
+    width: auto;
+    max-height: 80px;
+}
+
+.storage-item img.v{
+    width: auto;
+    max-height: 100%;
+}
+
+.storage-item img.h{
+    max-width: 100%;
+    height: auto;
 }

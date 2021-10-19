@@ -4,9 +4,16 @@ import Layout from './Layout'
 import '../../static/css/home.css';
 import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
-import { fetchData } from '../tools/app';
+import { fetchData, isImage, isUnknown } from '../tools/app';
 import { showMessage } from './context/MessageProvideer';
 import LeftRowIcon from './icons/LeftRowIcon';
+import pdfIcon from '../../static/images/icons/pdf.svg'
+import excelIcon from '../../static/images/icons/excel.svg'
+import docIcon from '../../static/images/icons/word.svg'
+import powerpointIcon from '../../static/images/icons/powerpoint.svg'
+import winrarIcon from '../../static/images/icons/winrar.svg'
+import unknowIcon from '../../static/images/icons/file.svg'
+
 
 const Home = () => {
 
@@ -31,6 +38,7 @@ const Home = () => {
             }
         })
 
+        console.log(JSON.parse(data.files));
         setFolder(JSON.parse(data.folders));
         setFile(JSON.parse(data.files));
         setCurrentFolder(data.id_current_folder);
@@ -109,6 +117,9 @@ const Home = () => {
                 message: response.message,
                 type: "check"
             });
+
+            let route = document.getElementById("route-field").value;
+            updateDirectory(route)
             
         }else{
 
@@ -198,6 +209,82 @@ const Home = () => {
                         })
                     )
                 }
+
+
+                {
+                    file != null && (
+                        file.map((item, index) => {
+                            return (
+                                <div 
+                                    className="storage-item" 
+                                    key={index}
+                                >
+                                    {
+                                        item.fields.favorite && (
+                                            <div className="icon">
+                                                <FillStarIcon width="15" height="15" fill="#FFC700"/>
+                                            </div>
+                                        )
+                                    }
+                                    {/*I******************************************** IMG FILE **********************************************/}
+                                    { 
+                                        isImage(item.fields.file_extension) && <img src={item.fields.file_url} alt="IMAGE" className={item.fields.orientation} /> 
+                                    }
+                                    {/*E******************************************** IMG FILE **********************************************/}
+
+
+                                    {/*I******************************************** PDF FILE **********************************************/}
+                                    {
+                                        item.fields.file_extension.toLowerCase() == "pdf" && <>
+                                            <img src={pdfIcon} alt="PDF" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
+                                    }
+                                    {/*E******************************************** PDF FILE **********************************************/}
+
+
+                                    {/*I******************************************* EXCEL FILE *********************************************/}
+                                    {
+                                        ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <img src={excelIcon} alt="XLS" />
+                                    }
+                                    {/*E******************************************* EXCEL FILE *********************************************/}
+
+
+                                    {/*I******************************************** DOC FILE **********************************************/}
+                                    {
+                                        ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <img src={docIcon} alt="DOCS" />
+                                    }
+                                    {/*E******************************************** DOC FILE **********************************************/}
+
+
+                                    {/*I**************************************** POWERPOINT FILE *******************************************/}
+                                    {
+                                        ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <img src={powerpointIcon} alt="PPT" />
+                                    }
+                                    {/*E**************************************** POWERPOINT FILE *******************************************/}
+
+
+                                    {/*I***************************************** ZIP, RAR FILES *******************************************/}
+                                    {
+                                        ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <img src={winrarIcon} alt="PPT" />
+                                    }
+                                    {/*E***************************************** ZIP, RAR FILES *******************************************/}
+
+
+                                    {/*I****************************************** UNKNOWN FILES *******************************************/}
+                                    {
+                                        isUnknown(item.fields.file_extension.toLowerCase()) && <img src={unknowIcon} alt="unknown" />
+                                    }
+                                    {/*E****************************************** UNKNOWN FILES *******************************************/}
+
+                                </div>
+                            )
+                        })
+                    )
+                }
+
 
             </div>
 

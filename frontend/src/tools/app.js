@@ -104,3 +104,42 @@ export const removeLoader = (value) => {
     
     return false;
 }
+
+
+
+export const isImage = (value) => {
+    let array = [
+        'jpg',
+        'jpge',
+        'png',
+        'gif',
+        'svg'
+    ];
+
+    return array.includes(value.toLowerCase()) ? true : false;
+
+}
+
+
+export const isUnknown = (value) => {
+    
+    let array = [
+        'jpg',
+        'jpge',
+        'png',
+        'gif',
+        'svg',
+        'pdf',
+        'xls',
+        'xlsx',
+        'doc',
+        'docx',
+        'ppt',
+        'pptx',
+        'zip',
+        'rar'
+    ];
+
+    return array.includes(value.toLowerCase()) ? false : true;
+
+}
