@@ -55,7 +55,7 @@ input[type="file"]{
     position: relative;
 }
 
-.setting span{
+.setting .btn-settings{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,9 +63,10 @@ input[type="file"]{
     padding: .4rem;
     border-radius: 50%;
     background-color: transparent;
+    border: none;
 }
 
-.setting span:hover, .btn-active{
+.setting .btn-settings:hover, .btn-active{
     background-color: rgb(236, 236, 236) !important;
 }
 

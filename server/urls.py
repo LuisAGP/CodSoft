@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon.ico'))),
@@ -25,4 +27,4 @@ urlpatterns = [
     path('cdsf/', include('main.urls'), name="main"),
     path('.well-known/pki-validation/8BD1650FB5B2C462D99CF9178633F8A2.txt', TemplateView.as_view(template_name='8BD1650FB5B2C462D99CF9178633F8A2.txt', content_type='text/plain'), name='ssl'),
     path('', include('frontend.urls'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

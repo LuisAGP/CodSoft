@@ -125,22 +125,32 @@ def uploadFiles(request):
     try:
         if request.user is not None:
             for index, filename in request.FILES.items():
+
                 file = request.FILES[index]
                 f = File()
 
-                f.id_folder = request.POST['id_folder']
+                id_folder = request.POST['id_folder'] if request.POST['id_folder'] != 'null' else None
+                folder = Folder.objects.filter(id_folder=id_folder).first()
+
+                f.id_folder = id_folder
                 f.file_route = request.POST['route']
                 f.id_user = request.user.id
                 f.file_extension = str(filename).split('.')[-1]
                 f.file_name = filename
                 f.file = file
 
+                if folder:
+                    url = str(folder.folder_route).replace("./", '') + folder.folder_name
+                    f.file_url = f'/media/storage/{request.user}/{url}/{filename}'
+                else:
+                    f.file_url = f'/media/storage/{request.user}/{filename}'
+
                 f.save()
 
         
         response = {'status': 200, 'message': 'Files has been uploaded!'}
-    except:
-        response = {'status': 500, 'message': 'Cannot upload files!'}
+    except Exception as e:
+        response = {'status': 500, 'message': f'Cannot upload files! E:{e}'}
 
 
     return HttpResponse(json.dumps(response), content_type="application/json")

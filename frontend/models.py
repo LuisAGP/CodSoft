@@ -21,10 +21,11 @@ class Folder(models.Model):
 def user_folder(instance, filename):
 
     user = User.objects.get(pk=instance.id_user)
-    folder = Folder.objects.get(pk=instance.id_folder)
+    folder = Folder.objects.filter(pk=instance.id_folder).first()
 
     if folder:
-        file_url = str(folder.folder_route) + "/" + filename
+        url = str(folder.folder_route).replace("./", '') + folder.folder_name
+        file_url = url + "/" + filename
     else:
         file_url = filename
 
@@ -39,6 +40,7 @@ class File(models.Model):
     file_extension = models.CharField(max_length=10)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to=user_folder)
+    file_url = models.TextField(null=True, blank=True)
     favorite = models.BooleanField(default=False)
     create_at = models.DateField(null=True, auto_now_add=True)
     deleted_at = models.DateField(null=True, default=None, blank=True)
