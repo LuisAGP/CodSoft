@@ -1,4 +1,3 @@
-import { getCSRF } from './csrftoken'
 import loaderGif from '../../static/images/loader.gif'
 
 let url = window.location.toString();
@@ -31,7 +30,7 @@ export async function fetchData(json){
             {
                 method: json.method,
                 credentials: "include",
-                headers: { 'X-CSRFToken': await getCSRF() },
+                headers: { 'X-CSRFToken': csrftoken },
                 body: json.method != "GET" ? data : undefined
             }
         )
