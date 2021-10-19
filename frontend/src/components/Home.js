@@ -200,7 +200,7 @@ const Home = () => {
                                             </div>
                                         )
                                     }
-                                    <FolderIcon width="80" height="80" fill="#F7DC6F"/>
+                                    <FolderIcon width="100" height="100" fill="#F7DC6F"/>
                                     <div className="folder-info">
                                         <span>{item.fields.folder_name}</span> 
                                     </div>
@@ -236,7 +236,7 @@ const Home = () => {
                                     {/*I******************************************** PDF FILE **********************************************/}
                                     {
                                         item.fields.file_extension.toLowerCase() == "pdf" && <>
-                                            <img src={pdfIcon} alt="PDF" />
+                                            <img src={pdfIcon} alt="PDF" className="doc" />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -247,35 +247,60 @@ const Home = () => {
 
                                     {/*I******************************************* EXCEL FILE *********************************************/}
                                     {
-                                        ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <img src={excelIcon} alt="XLS" />
+                                        ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <>
+                                            <img src={excelIcon} alt="XLS" className="doc" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
                                     }
                                     {/*E******************************************* EXCEL FILE *********************************************/}
 
 
                                     {/*I******************************************** DOC FILE **********************************************/}
                                     {
-                                        ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <img src={docIcon} alt="DOCS" />
+                                        ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <>
+                                            <img src={docIcon} alt="DOC" className="doc" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
                                     }
                                     {/*E******************************************** DOC FILE **********************************************/}
 
 
                                     {/*I**************************************** POWERPOINT FILE *******************************************/}
                                     {
-                                        ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <img src={powerpointIcon} alt="PPT" />
+                                        ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <>
+                                            <img src={powerpointIcon} alt="PTT" className="doc" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
                                     }
                                     {/*E**************************************** POWERPOINT FILE *******************************************/}
 
 
                                     {/*I***************************************** ZIP, RAR FILES *******************************************/}
                                     {
-                                        ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <img src={winrarIcon} alt="PPT" />
+                                        ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <>
+                                            <img src={winrarIcon} alt="winrar" className="doc" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
                                     }
                                     {/*E***************************************** ZIP, RAR FILES *******************************************/}
 
 
                                     {/*I****************************************** UNKNOWN FILES *******************************************/}
                                     {
-                                        isUnknown(item.fields.file_extension.toLowerCase()) && <img src={unknowIcon} alt="unknown" />
+                                        isUnknown(item.fields.file_extension.toLowerCase()) && <>
+                                            <img src={unknowIcon} alt="Unknown" className="doc" />
+                                            <div className="folder-info">
+                                                <span>{item.fields.file_name}</span> 
+                                            </div>
+                                        </>
                                     }
                                     {/*E****************************************** UNKNOWN FILES *******************************************/}
 
