@@ -34,7 +34,7 @@ const Modal = (props) => {
 
             props.afterSubmit && props.afterSubmit(props.params);
             setModal({visible: false});
-            removeLoader()
+            removeLoader(props.button)
             
         }else{
 
@@ -45,7 +45,7 @@ const Modal = (props) => {
             });
             
             setModal({visible: false});
-            removeLoader();
+            removeLoader(props.button);
 
         }
 

@@ -156,7 +156,13 @@ const Home = () => {
 
                 <div className="modal-field">
                     <label htmlFor="folder_name">Folder name:</label>
-                    <input type="text" name="folder_name" required/>
+                    <input 
+                        type="text" 
+                        name="folder_name" 
+                        pattern="(\w|ñ)+" 
+                        title="Do not support space and special caracters" 
+                        required
+                    />
                 </div>
 
                 <input type="hidden" name="id_folder" defaultValue={currentFolder} />

@@ -131,7 +131,7 @@ def createNewFolder(request):
         folder.folder_name = request.POST['folder_name']
         folder.folder_route = folder_route
 
-        folder.save()
+        #folder.save()
     
         response = {'status': 200, 'message': f'The folder "{folder.folder_name}" was created!'}
 
