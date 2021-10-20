@@ -9,5 +9,6 @@ urlpatterns = [
     path('islogged/', islogged, name="islogged"),
     path('getCSRFToken/', csrf, name="csrf"),
     path('getDirectory/', getDirectory),
+    path('createNewFolder/', createNewFolder),
     path('uploadFiles/', uploadFiles)
 ]

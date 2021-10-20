@@ -1,0 +1,126 @@
+.modal-background{
+    transition: all .5s ease;
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.247);
+    z-index: 20;
+}
+
+
+.hide-background{
+    transition: all .5s ease;
+    opacity: 0;
+    z-index: -1;
+}
+
+
+.modal-content{
+    transition: all .4s ease;
+    margin: 0 auto;
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    left: 0;
+    background-color: white;
+    width: 30rem;
+    border-radius: .3rem;
+}
+
+
+.hide-content{
+    transition: all .4s ease;
+    top: -150%;
+}
+
+
+.btn-close{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.btn-close:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+.modal-content .modal-header{
+    padding: .6rem 1rem;
+}
+
+
+.modal-header h3{
+    margin: 0;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(75, 75, 75);
+}
+
+.modal-header h6{
+    margin: .5rem 0 0 0;
+    text-align: left;
+    font-size: .7rem;
+    font-weight: bold;
+    color: rgb(211, 211, 211);
+}
+
+
+.modal-form{
+    padding: 2rem 2rem;
+}
+
+
+.modal-field{
+    border-radius: .3rem;
+    border:1px solid rgb(133, 133, 133);
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    align-items: center;
+    height: 2rem;
+}
+
+
+.modal-field label{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+    border-right: 1px solid rgb(133, 133, 133);
+    color: rgb(54, 54, 54);
+    vertical-align: middle;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.modal-field input{
+    padding: .4rem;
+    background-color: white;
+    border: none;
+    flex: auto;
+    height: 100%;
+    border-top: 1px solid rgb(209, 209, 209);
+    border-bottom: 1px solid rgb(209, 209, 209);
+    border-right: 1px solid rgb(209, 209, 209);
+    border-radius: 0 .3rem .3rem 0;
+}
+
+.modal-field input:focus{
+    outline: 1px solid rgba(53, 53, 255, 0.767);
+}
+
+
+
+.modal-footer{
+    text-align: center;
+    padding: .6rem 1rem;
+}

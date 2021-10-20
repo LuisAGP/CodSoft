@@ -1,3 +1,4 @@
+from django.http import response
 from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
@@ -112,6 +113,33 @@ def getDirectory(request):
 
     return HttpResponse(json.dumps(response), content_type="application/json")
 
+
+
+
+def createNewFolder(request):
+    response = {}
+
+    try:
+        folder = Folder()
+        folder_route = './'
+        if 'id_folder' in request.POST and request.POST['id_folder'] != "":
+            folder.id_parent_folder = request.POST['id_folder']
+            parent = Folder.objects.get(pk=request.POST['id_folder'])
+            folder_route = parent.folder_route + parent.folder_name + "/"
+        
+        folder.id_user = request.user.id
+        folder.folder_name = request.POST['folder_name']
+        folder.folder_route = folder_route
+
+        folder.save()
+    
+        response = {'status': 200, 'message': f'The folder "{folder.folder_name}" was created!'}
+
+    except Exception as e:
+        response = {'status': 500, 'message': f'Error: {e}'}
+    
+
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 

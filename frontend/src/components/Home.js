@@ -5,7 +5,6 @@ import '../../static/css/home.css';
 import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
 import { fetchData, isImage, isUnknown } from '../tools/app';
-import { showMessage } from './context/MessageProvideer';
 import LeftRowIcon from './icons/LeftRowIcon';
 import pdfIcon from '../../static/images/icons/pdf.svg'
 import excelIcon from '../../static/images/icons/excel.svg'
@@ -13,11 +12,13 @@ import docIcon from '../../static/images/icons/word.svg'
 import powerpointIcon from '../../static/images/icons/powerpoint.svg'
 import winrarIcon from '../../static/images/icons/winrar.svg'
 import unknowIcon from '../../static/images/icons/file.svg'
+import { generalContext } from './context/GeneralProvideer';
+import Modal from './utils/Modal';
 
 
 const Home = () => {
 
-    const {setAlert} = React.useContext(showMessage);
+    const {setAlert, setModal} = React.useContext(generalContext);
     const [previousRoute, setPreviousRoute] = React.useState("./");
     const [currentRoute, setCurrentRoute] = React.useState("./");
     const [currentFolder, setCurrentFolder] = React.useState("");
@@ -144,6 +145,23 @@ const Home = () => {
 
     return (
         <Layout>
+            <Modal 
+                url="createNewFolder/" 
+                button="Create" 
+                title="Create a new folder" 
+                subtitle={`Route: ${currentRoute}`}
+                afterSubmit={updateDirectory}
+                params={currentRoute}
+            >
+
+                <div className="modal-field">
+                    <label htmlFor="folder_name">Folder name:</label>
+                    <input type="text" name="folder_name" required/>
+                </div>
+
+                <input type="hidden" name="id_folder" defaultValue={currentFolder} />
+
+            </Modal>
             <div className="panel-tools">
 
 
@@ -172,7 +190,9 @@ const Home = () => {
                         </button>
 
                         <div className="menu-settings hidden" tabIndex="1" id="menu-settings" onBlur={settings}>
-                            <p>New folder</p>
+                            <p>
+                                <a onClick={e => setModal({visible: true})}>New Folder</a>
+                            </p>
                             <p>
                                 <a onClick={e => e.target.nextSibling.click()}>Upload files</a>
                                 <input type="file" multiple onChange={e => uploadFiles(e)}/>

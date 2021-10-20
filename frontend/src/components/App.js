@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import Home from './Home';
 import Login from './Login';
 import PublicRoute from './routes/PublicRoute';
-import { ShowMessageProvideer } from './context/MessageProvideer';
+import { GeneralContextProvideer } from './context/GeneralProvideer';
 
 export default class App extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <ShowMessageProvideer >
+            <GeneralContextProvideer >
                 <Router>
 
                     <Switch>
@@ -25,7 +25,7 @@ export default class App extends Component {
                     </Switch>
 
                 </Router>
-            </ShowMessageProvideer>
+            </GeneralContextProvideer>
         )
     }
 }

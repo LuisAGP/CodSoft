@@ -6,11 +6,11 @@ import cloudImage from '../../static/images/cloud.jpg';
 import userIcon from '../../static/images/user.svg'
 import pwdIcon from '../../static/images/lock.svg'
 import Message from './utils/Message';
-import { showMessage } from './context/MessageProvideer';
+import { generalContext } from './context/GeneralProvideer';
 
 const Login = (props) => {
 
-    const {alert, setAlert} = React.useContext(showMessage);
+    const {alert, setAlert} = React.useContext(generalContext);
 
     const userLogin = async(e) => {
         e.preventDefault();

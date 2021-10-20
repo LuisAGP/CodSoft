@@ -103,6 +103,37 @@
     grid-template-columns: repeat(6, 1fr);
 }
 
+
+@media (max-width: 1200px) {
+    .storage-content{
+        padding: 2rem .5rem;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 980px) {
+    .storage-content{
+        padding: 2rem .5rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+@media (max-width: 800px) {
+    .storage-content{
+        padding: 2rem .5rem;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+    .storage-content{
+        padding: 2rem .5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .storage-content{
         padding: 2rem .5rem;

@@ -2,11 +2,11 @@ import React from 'react'
 import Header from './Header'
 import '../../static/css/index.css'
 import Message from './utils/Message'
-import { showMessage } from './context/MessageProvideer'
+import { generalContext } from './context/GeneralProvideer'
 
 const Layout = (props) => {
 
-    const {alert, setAlert} = React.useContext(showMessage);
+    const {alert, setAlert} = React.useContext(generalContext);
 
     return (
         <div className="body">

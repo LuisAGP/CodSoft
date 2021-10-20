@@ -84,6 +84,7 @@ input[type="file"]{
     text-decoration: none;
     font-size: .8rem;
     font-weight: 400;
+    cursor: pointer;
 }
 
 .btn-primary{

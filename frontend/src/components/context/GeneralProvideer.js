@@ -1,13 +1,17 @@
 import React from 'react'
 
-const showMessage = React.createContext()
+const generalContext = React.createContext()
 
-const ShowMessageProvideer = ({ children }) => {
+const GeneralContextProvideer = ({ children }) => {
 
     const [alert, setAlert] = React.useState({
         status: 'hide',
         message: '',
         type: 'info'
+    });
+
+    const [modal, setModal] = React.useState({
+        visible: false
     });
 
 
@@ -26,12 +30,12 @@ const ShowMessageProvideer = ({ children }) => {
     }
 
     return (
-        <showMessage.Provider value={{alert, setAlert}} >
+        <generalContext.Provider value={{alert, setAlert, modal, setModal}} >
             { children }
-        </showMessage.Provider>
+        </generalContext.Provider>
     )
 
 }
 
 
-export { showMessage, ShowMessageProvideer }
+export { generalContext, GeneralContextProvideer }
