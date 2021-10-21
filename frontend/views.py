@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.core.files.images import get_image_dimensions
 import json
+from .helpers import isInString
 from django.core import serializers
 
 from frontend.models import *
@@ -120,6 +121,11 @@ def createNewFolder(request):
     response = {}
 
     try:
+
+        if isInString(['.','/','-',' ', '\'', '\"'], request.POST['folder_name']):
+            response = {'status': 500, 'message': f'The folder should not contain special caracters!'}
+            return HttpResponse(json.dumps(response), content_type="application/json")
+
         folder = Folder()
         folder_route = './'
         if 'id_folder' in request.POST and request.POST['id_folder'] != "":
@@ -131,7 +137,7 @@ def createNewFolder(request):
         folder.folder_name = request.POST['folder_name']
         folder.folder_route = folder_route
 
-        #folder.save()
+        folder.save()
     
         response = {'status': 200, 'message': f'The folder "{folder.folder_name}" was created!'}
 

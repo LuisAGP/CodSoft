@@ -34,7 +34,7 @@
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .modal-content{
-        max-width: 80%;
+        max-width: 90%;
     }
 }
 
@@ -56,6 +56,14 @@
 .btn-close:hover{
     cursor: pointer;
     transform: scale(1.1);
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .btn-close{
+        width: 1.3rem;
+        height: 1.3rem;
+    }
 }
 
 

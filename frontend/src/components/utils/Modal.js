@@ -7,10 +7,13 @@ import xIcon from '../../../static/images/icons/x.svg'
 const Modal = (props) => {
 
     const {setAlert, modal, setModal} = React.useContext(generalContext);
+    const [btnSubmit, setBtnSubmit] = React.useState(null);
 
 
     const formSubmit = async(event) => {
         event.preventDefault();
+
+        setLoader(btnSubmit)
         
         if(props.url == "" || props.url == null){
             return false;
@@ -34,7 +37,9 @@ const Modal = (props) => {
 
             props.afterSubmit && props.afterSubmit(props.params);
             setModal({visible: false});
-            removeLoader(props.button)
+            removeLoader(props.button);
+            setBtnSubmit(null);
+            event.target.reset();
             
         }else{
 
@@ -44,8 +49,8 @@ const Modal = (props) => {
                 type: "alert"
             });
             
-            setModal({visible: false});
             removeLoader(props.button);
+            setBtnSubmit(null);
 
         }
 
@@ -89,7 +94,7 @@ const Modal = (props) => {
 
 
                     <div className="modal-footer">
-                        <button type="submit" className="btn btn-primary" onClick={e => setLoader(e.target)}>
+                        <button type="submit" className="btn btn-primary" onClick={e => setBtnSubmit(e.target)}>
                             {props.button}
                         </button>
                     </div>
