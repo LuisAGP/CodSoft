@@ -43,7 +43,7 @@ def authentication(request, *args, **kwargs):
 
         if user is not None:
             login(request, user)
-            response = {'status': 200, 'message': 'Now you are logged!', 'logged': True}
+            response = {'status': 200, 'message': f'Welcome back {user.username}!', 'logged': True}
 
         else:
             response = {'status': 200, 'message': 'Wrong user or password!', 'logged': False}
