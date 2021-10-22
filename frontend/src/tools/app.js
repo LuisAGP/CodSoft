@@ -3,7 +3,7 @@ import loaderGif from '../../static/images/loader.gif'
 let buttonLoader;
 let url = window.location.toString();
 
-export const urlBase = url.includes('codsoft.lhr.rocks') ? "https://codsoft.lhr.rocks/" : "http://localhost:8000/"; 
+export const urlBase = url.includes('codsoft.lhr.rocks') ? "https://codsoft.lhr.rocks" : "http://localhost:8000"; 
 
 /**
  * Functiion to get csfrtoken from django
@@ -49,7 +49,7 @@ export function fetchData(json){
         
 
         return fetch(
-            urlBase + json.url,
+            `${urlBase}/${json.url}`,
             {
                 method: json.method,
                 credentials: "include",

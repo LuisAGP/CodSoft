@@ -7,6 +7,7 @@ import xIcon from '../../../static/images/icons/x.svg'
 const Modal = (props) => {
 
     const {setAlert, modal, setModal} = React.useContext(generalContext);
+
     const [btnSubmit, setBtnSubmit] = React.useState(null);
 
 
@@ -16,6 +17,8 @@ const Modal = (props) => {
         setLoader(btnSubmit)
         
         if(props.url == "" || props.url == null){
+            removeLoader(props.button);
+            props.afterSubmit && props.afterSubmit(props.params);
             return false;
         }
 
@@ -59,8 +62,11 @@ const Modal = (props) => {
 
     const onClickBackground = (e) => {
             
-        if (e.target.className.toString().includes("modal-background")) {
-            setModal({visible: false});   
+        if (e.target.className.toString().includes("modal-background") && e.target.id == props.id) {
+            setModal({
+                id_modal:props.id, 
+                visible: false
+            });   
         }
         
     }
@@ -68,7 +74,11 @@ const Modal = (props) => {
 
 
     return (
-        <div className={modal.visible ? "modal-background" : "modal-background hide-background"} onClick={e => onClickBackground(e)}>
+        <div 
+            id={props.id}
+            className={modal.visible && modal.id_modal == props.id ? "modal-background" : "modal-background hide-background"} 
+            onClick={e => onClickBackground(e)}
+        >
             <div className={modal.visible ? "modal-content" : "modal-content hide-content"}>
                 <form onSubmit={e => formSubmit(e)}>
 
@@ -81,7 +91,7 @@ const Modal = (props) => {
                         }
 
                         <div className="btn-close">
-                            <img src={xIcon} onClick={e => setModal({visible: false})}/>
+                            <img src={xIcon} onClick={e => setModal({id_modal: props.id, visible: false})}/>
                         </div>
                     </div><hr />
 
@@ -97,8 +107,19 @@ const Modal = (props) => {
                         <button type="submit" className="btn btn-primary" onClick={e => setBtnSubmit(e.target)}>
                             {props.button}
                         </button>
-                    </div>
 
+                        {
+                        props.cancel && (
+                            <button 
+                                type="button" 
+                                className="btn btn-gray" 
+                                onClick={e => setModal({id_modal: props.id, visible: false})}
+                            >
+                                Cancel
+                            </button>
+                        )
+                    }
+                    </div>
 
 
                 </form>

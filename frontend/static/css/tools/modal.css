@@ -139,3 +139,12 @@
     text-align: center;
     padding: .6rem 1rem;
 }
+
+
+.modal-footer button{
+    margin-right: .8rem;
+}
+
+.modal-footer button:last-child{
+    margin: 0;
+}

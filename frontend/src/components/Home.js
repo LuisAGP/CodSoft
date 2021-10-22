@@ -4,7 +4,7 @@ import Layout from './Layout'
 import '../../static/css/home.css';
 import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
-import { fetchData, isImage, isUnknown } from '../tools/app';
+import { fetchData, isImage, isUnknown, urlBase } from '../tools/app';
 import LeftRowIcon from './icons/LeftRowIcon';
 import pdfIcon from '../../static/images/icons/pdf.svg'
 import excelIcon from '../../static/images/icons/excel.svg'
@@ -24,6 +24,8 @@ const Home = () => {
     const [currentFolder, setCurrentFolder] = React.useState("");
     const [folder, setFolder] = React.useState(null);
     const [file, setFile] = React.useState(null);
+    const [fileName, setFileName] = React.useState(null);
+    const [downloadUrl, setDonwloadUrl] = React.useState(null);
 
 
     const updateDirectory = async(route=null) => {
@@ -138,6 +140,30 @@ const Home = () => {
     }
 
 
+    const chargeFileToDownload = (e) => {
+
+        let name = e.currentTarget.dataset.name;
+        let url = e.currentTarget.dataset.url;
+
+        setFileName(name);
+        setDonwloadUrl(url);
+        setModal({
+            id_modal: 'modal-donwload',
+            visible: true
+        });
+
+    }
+
+    const donwloadFile = () => {
+
+        console.log(fileName, downloadUrl);
+        var a = document.createElement("a");
+        a.href = downloadUrl;
+        a.setAttribute("download", fileName);
+        a.click();
+    }
+
+
     React.useEffect(() => {
         updateDirectory();
     }, []);
@@ -145,29 +171,7 @@ const Home = () => {
 
     return (
         <Layout>
-            <Modal 
-                url="createNewFolder/" 
-                button="Create" 
-                title="Create a new folder" 
-                subtitle={`Route: ${currentRoute}`}
-                afterSubmit={updateDirectory}
-                params={currentRoute}
-            >
 
-                <div className="modal-field">
-                    <label htmlFor="folder_name">Folder name:</label>
-                    <input 
-                        type="text" 
-                        name="folder_name" 
-                        pattern="(\w|ñ)+" 
-                        title="Do not support space and special caracters" 
-                        required
-                    />
-                </div>
-
-                <input type="hidden" name="id_folder" defaultValue={currentFolder} />
-
-            </Modal>
             <div className="panel-tools">
 
 
@@ -197,13 +201,15 @@ const Home = () => {
 
                         <div className="menu-settings hidden" tabIndex="1" id="menu-settings" onBlur={settings}>
                             <p>
-                                <a onClick={e => setModal({visible: true})}>New Folder</a>
+                                <a onClick={e => setModal({id_modal:'modal-folder', visible: true})}>New Folder</a>
                             </p>
                             <p>
                                 <a onClick={e => e.target.nextSibling.click()}>Upload files</a>
                                 <input type="file" multiple onChange={e => uploadFiles(e)}/>
                             </p>
-                            <p>More</p>
+                            <p>
+                                <a>More</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -262,6 +268,7 @@ const Home = () => {
                                                                                     decoding="async" 
                                                                                     src={item.fields.prefix_url+item.fields.file} 
                                                                                     alt="IMAGE" 
+                                                                                    decoding="async"
                                                                                     className={item.fields.orientation}
                                                                                 /> 
                                     }
@@ -271,7 +278,14 @@ const Home = () => {
                                     {/*I******************************************** PDF FILE **********************************************/}
                                     {
                                         item.fields.file_extension.toLowerCase() == "pdf" && <>
-                                            <img decoding="async" src={pdfIcon} alt="PDF" className="doc" />
+                                            <img 
+                                                src={pdfIcon} 
+                                                alt="PDF" 
+                                                className="doc"
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)}
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -283,7 +297,14 @@ const Home = () => {
                                     {/*I******************************************* EXCEL FILE *********************************************/}
                                     {
                                         ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img decoding="async" src={excelIcon} alt="XLS" className="doc" />
+                                            <img 
+                                                src={excelIcon} 
+                                                alt="XLS" 
+                                                className="doc"
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)} 
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -295,7 +316,14 @@ const Home = () => {
                                     {/*I******************************************** DOC FILE **********************************************/}
                                     {
                                         ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img decoding="async" src={docIcon} alt="DOC" className="doc" />
+                                            <img 
+                                                src={docIcon} 
+                                                alt="DOC" 
+                                                className="doc"
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)} 
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -307,7 +335,14 @@ const Home = () => {
                                     {/*I**************************************** POWERPOINT FILE *******************************************/}
                                     {
                                         ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img decoding="async" src={powerpointIcon} alt="PTT" className="doc" />
+                                            <img 
+                                                src={powerpointIcon} 
+                                                alt="PTT" 
+                                                className="doc"
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)} 
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -319,7 +354,14 @@ const Home = () => {
                                     {/*I***************************************** ZIP, RAR FILES *******************************************/}
                                     {
                                         ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img decoding="async" src={winrarIcon} alt="winrar" className="doc" />
+                                            <img 
+                                                src={winrarIcon} 
+                                                alt="winrar" 
+                                                className="doc" 
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)}
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -331,7 +373,14 @@ const Home = () => {
                                     {/*I****************************************** UNKNOWN FILES *******************************************/}
                                     {
                                         isUnknown(item.fields.file_extension.toLowerCase()) && <>
-                                            <img decoding="async" src={unknowIcon} alt="Unknown" className="doc" />
+                                            <img 
+                                                src={unknowIcon} 
+                                                alt="Unknown" 
+                                                className="doc" 
+                                                data-name={item.fields.file_name}
+                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                onClick={e => chargeFileToDownload(e)}
+                                            />
                                             <div className="folder-info">
                                                 <span>{item.fields.file_name}</span> 
                                             </div>
@@ -344,9 +393,55 @@ const Home = () => {
                         })
                     )
                 }
-
+                
 
             </div>
+
+            {/*I****************************************** MODAL SECTION *******************************************/}
+
+            <Modal 
+                id="modal-folder"
+                url="createNewFolder/" 
+                button="Create" 
+                title="Create a new folder" 
+                subtitle={`Route: ${currentRoute}`}
+                afterSubmit={updateDirectory}
+                params={currentRoute}
+            >
+
+                <div className="modal-field">
+                    <label htmlFor="folder_name">Folder name:</label>
+                    <input 
+                        type="text" 
+                        name="folder_name" 
+                        pattern="(\w|ñ)+" 
+                        title="Do not support space and special caracters" 
+                        required
+                    />
+                </div>
+
+                <input type="hidden" name="id_folder" defaultValue={currentFolder} />
+
+            </Modal>
+
+
+
+            <Modal
+                id="modal-donwload"
+                url="" 
+                button="Download" 
+                cancel={true}
+                title="Download File" 
+                subtitle={`File: ${fileName}`}
+                afterSubmit={donwloadFile}
+            >
+
+                <p className="center">Are you sure to donwload "{fileName}" ?</p>
+                
+            </Modal>
+
+
+            {/*E****************************************** MODAL SECTION *******************************************/}
 
         </Layout>
     )

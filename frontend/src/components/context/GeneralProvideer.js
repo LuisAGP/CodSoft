@@ -11,6 +11,7 @@ const GeneralContextProvideer = ({ children }) => {
     });
 
     const [modal, setModal] = React.useState({
+        id_modal: '',
         visible: false
     });
 
