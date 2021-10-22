@@ -96,12 +96,12 @@ def getDirectory(request):
             if current_folder:
                 id_current_folder = current_folder[0].id_folder
 
-            folders = Folder.objects.filter(folder_route=request.POST['route'], deleted_at=None)
-            files = File.objects.filter(file_route=request.POST['route'], deleted_at=None)
+            folders = Folder.objects.filter(folder_route=request.POST['route'], deleted_at=None, id_user=request.user.id)
+            files = File.objects.filter(file_route=request.POST['route'], deleted_at=None, id_user=request.user.id)
 
         else:
-            folders = Folder.objects.filter(folder_route='./', deleted_at=None)
-            files = File.objects.filter(file_route='./', deleted_at=None)
+            folders = Folder.objects.filter(folder_route='./', deleted_at=None, id_user=request.user.id)
+            files = File.objects.filter(file_route='./', deleted_at=None, id_user=request.user.id)
         
         folders = serializers.serialize('json', folders)
         files = serializers.serialize('json', files)
