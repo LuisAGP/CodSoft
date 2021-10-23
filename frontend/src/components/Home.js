@@ -154,13 +154,39 @@ const Home = () => {
 
     }
 
+
+
     const donwloadFile = () => {
 
-        console.log(fileName, downloadUrl);
         var a = document.createElement("a");
         a.href = downloadUrl;
         a.setAttribute("download", fileName);
         a.click();
+
+    }
+
+
+    const switchImageFile = (fileType) => {
+
+        if (isImage(fileType)) {
+            return false;
+        }
+
+        switch(fileType){
+            case 'pdf': 
+                return pdfIcon;
+            case 'xls': case 'xlsx': 
+                return excelIcon;
+            case 'doc': case 'docx': 
+                return docIcon;
+            case 'ppt': case 'pptx': 
+                return powerpointIcon;
+            case 'zip': case 'rar': 
+                return winrarIcon;
+            default: 
+                return unknowIcon;
+        }
+
     }
 
 
@@ -268,18 +294,17 @@ const Home = () => {
                                                                                     decoding="async" 
                                                                                     src={item.fields.prefix_url+item.fields.file} 
                                                                                     alt="IMAGE" 
-                                                                                    decoding="async"
                                                                                     className={item.fields.orientation}
                                                                                 /> 
                                     }
                                     {/*E******************************************** IMG FILE **********************************************/}
 
 
-                                    {/*I******************************************** PDF FILE **********************************************/}
+                                    {/*I******************************************* OTHER FILE ********************************************/}
                                     {
-                                        item.fields.file_extension.toLowerCase() == "pdf" && <>
+                                        switchImageFile(item.fields.file_extension.toLowerCase()) && <>
                                             <img 
-                                                src={pdfIcon} 
+                                                src={switchImageFile(item.fields.file_extension.toLowerCase())} 
                                                 alt="PDF" 
                                                 className="doc"
                                                 data-name={item.fields.file_name}
@@ -291,102 +316,7 @@ const Home = () => {
                                             </div>
                                         </>
                                     }
-                                    {/*E******************************************** PDF FILE **********************************************/}
-
-
-                                    {/*I******************************************* EXCEL FILE *********************************************/}
-                                    {
-                                        ['xls', 'xlsx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={excelIcon} 
-                                                alt="XLS" 
-                                                className="doc"
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)} 
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E******************************************* EXCEL FILE *********************************************/}
-
-
-                                    {/*I******************************************** DOC FILE **********************************************/}
-                                    {
-                                        ['doc', 'docx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={docIcon} 
-                                                alt="DOC" 
-                                                className="doc"
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)} 
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E******************************************** DOC FILE **********************************************/}
-
-
-                                    {/*I**************************************** POWERPOINT FILE *******************************************/}
-                                    {
-                                        ['ppt', 'pptx'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={powerpointIcon} 
-                                                alt="PTT" 
-                                                className="doc"
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)} 
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E**************************************** POWERPOINT FILE *******************************************/}
-
-
-                                    {/*I***************************************** ZIP, RAR FILES *******************************************/}
-                                    {
-                                        ['zip', 'rar'].includes(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={winrarIcon} 
-                                                alt="winrar" 
-                                                className="doc" 
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)}
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E***************************************** ZIP, RAR FILES *******************************************/}
-
-
-                                    {/*I****************************************** UNKNOWN FILES *******************************************/}
-                                    {
-                                        isUnknown(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={unknowIcon} 
-                                                alt="Unknown" 
-                                                className="doc" 
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)}
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E****************************************** UNKNOWN FILES *******************************************/}
+                                    {/*E******************************************* OTHER FILE ********************************************/}
 
                                 </div>
                             )
@@ -436,7 +366,7 @@ const Home = () => {
                 afterSubmit={donwloadFile}
             >
 
-                <p className="center">Are you sure to donwload "{fileName}" ?</p>
+                <p className="center">Are you sure to download "{fileName}" ?</p>
                 
             </Modal>
 
