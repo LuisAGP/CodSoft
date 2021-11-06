@@ -8,6 +8,12 @@ class AuthRequiredMiddleware(object):
         self.get_response = get_response
     
     def __call__(self, request):
+
+        # Uncomment this lines for change the SSL certificate
+        #if request.path != reverse('ssl'):
+            #return HttpResponseRedirect(reverse('ssl'))
+            
+
         # Here I call login if not authenticated and request is not login page
         if not request.user.is_authenticated and request.path != reverse('login_page') and request.path != reverse('auth') and request.path != reverse('update') and request.path != reverse('csrf') and request.path != reverse('ssl'):
             return HttpResponseRedirect(reverse('login_page'))
