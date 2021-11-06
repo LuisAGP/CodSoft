@@ -9,6 +9,7 @@ class AuthRequiredMiddleware(object):
     
     def __call__(self, request):
 
+        # Uncomment this lines for change the SSL certificate
         #if request.path != reverse('ssl'):
             #return HttpResponseRedirect(reverse('ssl'))
             
