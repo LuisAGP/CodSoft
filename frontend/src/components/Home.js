@@ -4,7 +4,7 @@ import Layout from './Layout'
 import '../../static/css/home.css';
 import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
-import { fetchData, isImage, isUnknown, urlBase } from '../tools/app';
+import { fetchData, isImage, urlBase, isVideo } from '../tools/app';
 import LeftRowIcon from './icons/LeftRowIcon';
 import pdfIcon from '../../static/images/icons/pdf.svg'
 import excelIcon from '../../static/images/icons/excel.svg'
@@ -172,6 +172,10 @@ const Home = () => {
             return false;
         }
 
+        if (isVideo(fileType)) {
+            return false;
+        }
+
         switch(fileType){
             case 'pdf': 
                 return pdfIcon;
@@ -299,6 +303,12 @@ const Home = () => {
                                     }
                                     {/*E******************************************** IMG FILE **********************************************/}
 
+                                    {
+                                        isVideo(item.fields.file_extension) && <video controls play Volume>
+                                                                                    <source src={item.fields.prefix_url+item.fields.file} />
+                                                                                    Your browser does not support the video tag.
+                                                                                </video>
+                                    }
 
                                     {/*I******************************************* OTHER FILE ********************************************/}
                                     {

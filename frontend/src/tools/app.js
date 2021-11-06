@@ -168,6 +168,27 @@ export const isImage = (value) => {
 
 
 /**
+ * Function for check if the file is a image
+ * @author Luis GP
+ * @param {String} value 
+ * @returns {Boolean}
+ */
+ export const isVideo = (value) => {
+    let array = [
+        'mp4',
+        'ogg',
+        'webm'
+    ];
+
+    return array.includes(value.toLowerCase()) ? true : false;
+
+}
+
+
+
+
+
+/**
  * Function to check if the file extention is not supported the app
  * @author Luis GP
  * @param {String} value 
