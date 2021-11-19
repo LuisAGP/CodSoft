@@ -98,7 +98,7 @@
 }
 
 .storage-content{
-    padding: 2rem 3rem;
+    padding: .8rem .5rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -151,6 +151,10 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .storage-item:hover {
@@ -169,11 +173,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: 12rem;
 }
 
 .storage-item img.doc{
     width: auto;
-    height: 100px;
+    height: 140px;
 }
 
 .storage-item img.v{

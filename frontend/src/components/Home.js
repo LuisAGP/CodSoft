@@ -266,7 +266,7 @@ const Home = () => {
                                             </div>
                                         )
                                     }
-                                    <FolderIcon width="100" height="100" fill="#F7DC6F"/>
+                                    <FolderIcon width="140" height="140" fill="#F7DC6F"/>
                                     <div className="folder-info">
                                         <span>{item.fields.folder_name}</span> 
                                     </div>
@@ -304,7 +304,7 @@ const Home = () => {
                                     {/*E******************************************** IMG FILE **********************************************/}
 
                                     {
-                                        isVideo(item.fields.file_extension) && <video controls play Volume>
+                                        isVideo(item.fields.file_extension) && <video controls play="true">
                                                                                     <source src={item.fields.prefix_url+item.fields.file} />
                                                                                     Your browser does not support the video tag.
                                                                                 </video>
