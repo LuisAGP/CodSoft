@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.core.files.images import get_image_dimensions
 import json
-from .helpers import isInString
+from .helpers import isInString, compress_image
 from django.core import serializers
 
 from frontend.models import *
@@ -173,12 +173,19 @@ def uploadFiles(request):
 
                 if folder:
                     url = str(folder.folder_route).replace("./", '') + folder.folder_name
-                    f.file_url = f'/media/storage/{request.user}/{url}/{filename}'
+                    f.full_url = f'/media/storage/{request.user}/{url}/'
                 else:
-                    f.file_url = f'/media/storage/{request.user}/{filename}'
+                    f.full_url = f'/media/storage/{request.user}/'
 
 
-                if extension in ['jpg','jpge','png','gif']:
+                if extension in ['jpg','jpeg','png','gif']:
+
+                    # Compress image data
+                    image = compress_image(file)
+                    f.file_compress = image
+
+                    print(f.file_compress)
+                    print("************************************************")
                     width, height = get_image_dimensions(file)
                     f.img_width = width
                     f.img_height = height
@@ -193,6 +200,7 @@ def uploadFiles(request):
         
         response = {'status': 200, 'message': 'Files has been uploaded!'}
     except Exception as e:
+        print(e)
         response = {'status': 500, 'message': f'Cannot upload files! E:{e}'}
 
 

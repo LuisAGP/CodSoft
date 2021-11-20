@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
+from django.db.models.fields import BLANK_CHOICE_DASH
 
 # Create your models here.
 
@@ -40,6 +42,7 @@ class File(models.Model):
     file_extension = models.CharField(max_length=10)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to=user_folder)
+    file_compress = models.FileField(upload_to=user_folder, null=True)
     prefix_url = models.CharField(max_length=10, null=True, blank=True, default="/media/")
     img_width = models.CharField(max_length=255, null=True, blank=True, default='0')
     img_height = models.CharField(max_length=255, null=True, blank=True, default='0')

@@ -296,7 +296,7 @@ const Home = () => {
                                     { 
                                         isImage(item.fields.file_extension) && <img 
                                                                                     decoding="async" 
-                                                                                    src={item.fields.prefix_url+item.fields.file} 
+                                                                                    src={item.fields.prefix_url+item.fields.file_compress} 
                                                                                     alt="IMAGE" 
                                                                                     className={item.fields.orientation}
                                                                                 /> 
