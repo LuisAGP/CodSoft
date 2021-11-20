@@ -37,11 +37,10 @@ def compress_image(file):
         width = max_size
 
     image = image.resize((width, height))
+    image = image.convert('RGB')
 
     byte_io = BytesIO()
-
-    format_file = str(file).split('.')[-1].upper()
-    image.save(byte_io,format=format_file,optimize=True,quality=90)
+    image.save(byte_io,format="JPEG",optimize=True,quality=90)
 
     image_file = File(byte_io, f"___compress_{file}")
 
