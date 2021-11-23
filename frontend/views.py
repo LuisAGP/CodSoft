@@ -1,4 +1,3 @@
-from django.http import response
 from django.middleware.csrf import get_token
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
@@ -204,4 +203,14 @@ def uploadFiles(request):
         response = {'status': 500, 'message': f'Cannot upload files! E:{e}'}
 
 
+    return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+
+
+
+def deleteAllFiles(requent):
+    File.objects.all().delete()
+
+    response = {'status': 200, 'message': 'All Files were deleted!'}
     return HttpResponse(json.dumps(response), content_type="application/json")

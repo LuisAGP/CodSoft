@@ -10,5 +10,6 @@ urlpatterns = [
     path('getCSRFToken/', csrf, name="csrf"),
     path('getDirectory/', getDirectory),
     path('createNewFolder/', createNewFolder),
-    path('uploadFiles/', uploadFiles)
+    path('uploadFiles/', uploadFiles),
+    path('deleteAllFiles/', deleteAllFiles)
 ]

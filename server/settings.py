@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'codsoft.lhr.rocks',
-    '192.168.100.10'
+    '192.168.100.10',
+    '192.168.1.253'
 ]
 
 
@@ -150,16 +151,22 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'https://codsoft.lhr.rocks'
+    'https://codsoft.lhr.rocks',
+    'http://codsoft.lhr.rocks',
+    'http://192.168.1.253:8000'
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    'https://codsoft.lhr.rocks'
+    'https://codsoft.lhr.rocks',
+    'http://codsoft.lhr.rocks',
+    'http://192.168.1.253:8000'
 ]
 
 # List of host witch are trusted origins
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'https://codsoft.lhr.rocks',
+    'http://192.168.1.253:8000',
+    'http://codsoft.lhr.rocks',
 ]

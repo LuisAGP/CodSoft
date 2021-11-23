@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageOps
 from io import BytesIO
 from django.core.files import File
 
@@ -23,9 +23,18 @@ def isInString(values, string):
 
 
 
+
+
+'''
+Function for compress an image
+@author Luis GP
+@param {File}
+@return {File}
+'''
 def compress_image(file):
     
     image = Image.open(file)
+    image = ImageOps.exif_transpose(image)
     width, height = image.size
     max_size = 500
 

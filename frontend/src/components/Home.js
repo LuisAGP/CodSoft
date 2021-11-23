@@ -194,6 +194,24 @@ const Home = () => {
     }
 
 
+    const deleteAllFiles = async() => {
+
+        let response = await fetchData({
+            url: 'deleteAllFiles/',
+            method: 'POST'
+        });
+
+        if (response.status === 200) {
+            setAlert({
+                status: 'show',
+                message: response.message,
+                type: "check"
+            });
+        }
+
+    }
+
+
     React.useEffect(() => {
         updateDirectory();
     }, []);
@@ -238,7 +256,7 @@ const Home = () => {
                                 <input type="file" multiple onChange={e => uploadFiles(e)}/>
                             </p>
                             <p>
-                                <a>More</a>
+                                <a onClick={deleteAllFiles}>Delete All Files</a>
                             </p>
                         </div>
                     </div>
