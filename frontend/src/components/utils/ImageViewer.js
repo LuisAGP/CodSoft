@@ -29,7 +29,6 @@ const ImageViewer = (props) => {
     const nextImage = () => {
         let newIndex = index +1;
 
-        console.log(newIndex);
         if (newIndex < images.length) {
             setIndex(newIndex);
         }

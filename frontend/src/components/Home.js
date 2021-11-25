@@ -49,17 +49,19 @@ const Home = () => {
 
 
         let files = await JSON.parse(data.files);
+        files = files && files.length > 0 ? files.filter(item => {
+            return isImage(item.fields.file_extension);
+        }) : null;
 
-        console.log(files)
-
-        setImages(files && files.length > 0 ? files.map(item => {
-            if (isImage(item.fields.file_extension)) {
-                return {
-                    id: item.pk,
-                    url: item.fields.prefix_url+item.fields.file_compress
-                }
+        files = files && files.length > 0 ? files.map(item => {
+            return {
+                id: item.pk,
+                url: item.fields.prefix_url+item.fields.file_compress
             }
-        }) : null);
+        }) : null;
+
+
+        setImages(files);
 
     }
 
