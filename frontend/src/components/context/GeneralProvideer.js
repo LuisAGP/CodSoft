@@ -15,6 +15,7 @@ const GeneralContextProvideer = ({ children }) => {
         visible: false
     });
 
+    const [viewer, setViewer] = React.useState(false);
 
     /**
      * Condition to hide the alert after 2.5 secons
@@ -31,7 +32,16 @@ const GeneralContextProvideer = ({ children }) => {
     }
 
     return (
-        <generalContext.Provider value={{alert, setAlert, modal, setModal}} >
+        <generalContext.Provider 
+            value={{
+                alert, 
+                setAlert, 
+                modal, 
+                setModal,
+                viewer, 
+                setViewer
+            }} 
+        >
             { children }
         </generalContext.Provider>
     )

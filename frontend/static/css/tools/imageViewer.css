@@ -1,0 +1,88 @@
+.viewer-background{
+    transition: all .5s ease;
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.808);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hide-viewer{
+    transition: all .5s ease;
+    opacity: 0;
+    z-index: -1;
+}
+
+.viewer-control{
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+    position: relative;
+}
+
+.viewer-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 21;
+    background-color: rgba(0, 0, 0, 0.37);
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-header{
+    cursor: pointer;
+}
+
+
+.btn-close-viewer{
+    margin: 0;
+    background-color: #f83737;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: .5rem;
+    left: 1rem;
+    z-index: 25;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+}
+
+.btn-close-viewer:hover{
+    transform: scale(1.07);
+}
+
+
+.viewer-body img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height:100%;
+    max-width:100%;  
+    width: unset;
+    height: unset;  
+}

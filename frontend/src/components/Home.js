@@ -14,11 +14,12 @@ import winrarIcon from '../../static/images/icons/winrar.svg'
 import unknowIcon from '../../static/images/icons/file.svg'
 import { generalContext } from './context/GeneralProvideer';
 import Modal from './utils/Modal';
+import ImageViewer from './utils/ImageViewer';
 
 
 const Home = () => {
 
-    const {setAlert, setModal} = React.useContext(generalContext);
+    const {setAlert, setModal, viewer, setViewer} = React.useContext(generalContext);
     const [previousRoute, setPreviousRoute] = React.useState("./");
     const [currentRoute, setCurrentRoute] = React.useState("./");
     const [currentFolder, setCurrentFolder] = React.useState("");
@@ -26,6 +27,8 @@ const Home = () => {
     const [file, setFile] = React.useState(null);
     const [fileName, setFileName] = React.useState(null);
     const [downloadUrl, setDonwloadUrl] = React.useState(null);
+    const [images, setImages] = React.useState(null);
+    const [idImage, setIdImage] = React.useState(null);
 
 
     const updateDirectory = async(route=null) => {
@@ -38,12 +41,25 @@ const Home = () => {
             data: {
                 route: route
             }
-        })
-
+        });
 
         setFolder(JSON.parse(data.folders));
         setFile(JSON.parse(data.files));
         setCurrentFolder(data.id_current_folder);
+
+
+        let files = await JSON.parse(data.files);
+
+        console.log(files)
+
+        setImages(files && files.length > 0 ? files.map(item => {
+            if (isImage(item.fields.file_extension)) {
+                return {
+                    id: item.pk,
+                    url: item.fields.prefix_url+item.fields.file_compress
+                }
+            }
+        }) : null);
 
     }
 
@@ -212,6 +228,14 @@ const Home = () => {
     }
 
 
+    const viewPicture = (e) => {
+
+        setIdImage(e.target.dataset.id_image);
+        setViewer(true);
+
+    }
+
+
     React.useEffect(() => {
         updateDirectory();
     }, []);
@@ -317,6 +341,8 @@ const Home = () => {
                                                                                     src={item.fields.prefix_url+item.fields.file_compress} 
                                                                                     alt="IMAGE" 
                                                                                     className={item.fields.orientation}
+                                                                                    data-id_image={item.pk}
+                                                                                    onClick={e => viewPicture(e)}
                                                                                 /> 
                                     }
                                     {/*E******************************************** IMG FILE **********************************************/}
@@ -397,6 +423,9 @@ const Home = () => {
                 <p className="center">Are you sure to download "{fileName}" ?</p>
                 
             </Modal>
+
+
+            <ImageViewer images={images} id={idImage} />
 
 
             {/*E****************************************** MODAL SECTION *******************************************/}
