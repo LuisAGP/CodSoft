@@ -220,7 +220,7 @@ export const isUnknown = (value) => {
 
 
 export const getImages = (files) => {
-
+    
     try{
 
         files = files && files.length > 0 ? files.filter(item => {
@@ -230,7 +230,7 @@ export const getImages = (files) => {
         files = files && files.length > 0 ? files.map(item => {
             return {
                 id: item.pk,
-                url: item.fields.prefix_url+item.fields.file
+                url: item.fields.prefix_url+item.fields.file_compress
             }
         }) : null;
 
