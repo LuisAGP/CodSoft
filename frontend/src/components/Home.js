@@ -4,7 +4,7 @@ import Layout from './Layout'
 import '../../static/css/home.css';
 import FolderIcon from './icons/FolderIcon';
 import FillStarIcon from './icons/FillStarIcon';
-import { fetchData, isImage, urlBase, isVideo } from '../tools/app';
+import { fetchData, isImage, urlBase, isVideo, getImages } from '../tools/app';
 import LeftRowIcon from './icons/LeftRowIcon';
 import pdfIcon from '../../static/images/icons/pdf.svg'
 import excelIcon from '../../static/images/icons/excel.svg'
@@ -49,19 +49,7 @@ const Home = () => {
 
 
         let files = await JSON.parse(data.files);
-        files = files && files.length > 0 ? files.filter(item => {
-            return isImage(item.fields.file_extension);
-        }) : null;
-
-        files = files && files.length > 0 ? files.map(item => {
-            return {
-                id: item.pk,
-                url: item.fields.prefix_url+item.fields.file_compress
-            }
-        }) : null;
-
-
-        setImages(files);
+        setImages(getImages(files));
 
     }
 

@@ -216,3 +216,28 @@ export const isUnknown = (value) => {
     return array.includes(value.toLowerCase()) ? false : true;
 
 }
+
+
+
+export const getImages = (files) => {
+
+    try{
+
+        files = files && files.length > 0 ? files.filter(item => {
+            return isImage(item.fields.file_extension);
+        }) : null;
+
+        files = files && files.length > 0 ? files.map(item => {
+            return {
+                id: item.pk,
+                url: item.fields.prefix_url+item.fields.file
+            }
+        }) : null;
+
+        return files;
+
+    }catch(e){
+        console.error(e);
+    }
+
+}
