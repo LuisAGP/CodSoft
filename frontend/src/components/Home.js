@@ -15,6 +15,8 @@ import unknowIcon from '../../static/images/icons/file.svg'
 import { generalContext } from './context/GeneralProvideer';
 import Modal from './utils/Modal';
 import ImageViewer from './utils/ImageViewer';
+import NotExists from './utils/NotExists';
+import EmptyFolder from './utils/EmptyFolder';
 
 
 const Home = () => {
@@ -29,6 +31,8 @@ const Home = () => {
     const [downloadUrl, setDonwloadUrl] = React.useState(null);
     const [images, setImages] = React.useState(null);
     const [idImage, setIdImage] = React.useState(null);
+    const [exists, setExists] = React.useState(false);
+    const [notEmpty, setNotEmpty] = React.useState(false);
 
 
     const updateDirectory = async(route=null) => {
@@ -43,6 +47,9 @@ const Home = () => {
             }
         });
 
+
+        setExists(data.exists);
+        setNotEmpty(data.notEmpty);
         setFolder(JSON.parse(data.folders));
         setFile(JSON.parse(data.files));
         setCurrentFolder(data.id_current_folder);
@@ -277,99 +284,112 @@ const Home = () => {
                 </div>
             </div>
             
-            <div className="storage-content">
 
-                {
-                    folder != null && (
-                        folder.map((item, index) => {
-                            return (
-                                <div 
-                                    className="storage-item" 
-                                    key={index}
-                                    data-route={item.fields.folder_route+item.fields.folder_name+"/"}
-                                    data-id_folder={item.pk}
-                                    data-folder_route={item.fields.folder_route}
-                                    onClick={e => openFolder(e)}
-                                >
-                                    {
-                                        item.fields.favorite && (
-                                            <div className="icon">
-                                                <FillStarIcon width="15" height="15" fill="#FFC700"/>
+
+
+            {
+                exists ? (
+
+
+                    notEmpty ? (
+                        <div className="storage-content">
+                            {
+                                folder != null && (
+                                    folder.map((item, index) => {
+                                        return (
+                                            <div 
+                                                className="storage-item" 
+                                                key={index}
+                                                data-route={item.fields.folder_route+item.fields.folder_name+"/"}
+                                                data-id_folder={item.pk}
+                                                data-folder_route={item.fields.folder_route}
+                                                onClick={e => openFolder(e)}
+                                            >
+                                                {
+                                                    item.fields.favorite && (
+                                                        <div className="icon">
+                                                            <FillStarIcon width="15" height="15" fill="#FFC700"/>
+                                                        </div>
+                                                    )
+                                                }
+                                                <FolderIcon width="140" height="140" fill="#F7DC6F"/>
+                                                <div className="folder-info">
+                                                    <span>{item.fields.folder_name}</span> 
+                                                </div>
                                             </div>
                                         )
-                                    }
-                                    <FolderIcon width="140" height="140" fill="#F7DC6F"/>
-                                    <div className="folder-info">
-                                        <span>{item.fields.folder_name}</span> 
-                                    </div>
-                                </div>
-                            )
-                        })
-                    )
-                }
+                                    })
+                                )
+                            }
 
 
-                {
-                    file != null && (
-                        file.map((item, index) => {
-                            return (
-                                <div 
-                                    className="storage-item" 
-                                    key={index}
-                                >
-                                    {
-                                        item.fields.favorite && (
-                                            <div className="icon">
-                                                <FillStarIcon width="15" height="15" fill="#FFC700"/>
+                            {
+                                file != null && (
+                                    file.map((item, index) => {
+                                        return (
+                                            <div 
+                                                className="storage-item" 
+                                                key={index}
+                                            >
+                                                {
+                                                    item.fields.favorite && (
+                                                        <div className="icon">
+                                                            <FillStarIcon width="15" height="15" fill="#FFC700"/>
+                                                        </div>
+                                                    )
+                                                }
+                                                {/*I******************************************** IMG FILE **********************************************/}
+                                                { 
+                                                    isImage(item.fields.file_extension) && <img 
+                                                                                                decoding="async" 
+                                                                                                src={item.fields.prefix_url+item.fields.file_compress} 
+                                                                                                alt="IMAGE" 
+                                                                                                className={item.fields.orientation}
+                                                                                                data-id_image={item.pk}
+                                                                                                onClick={e => viewPicture(e)}
+                                                                                            /> 
+                                                }
+                                                {/*E******************************************** IMG FILE **********************************************/}
+
+                                                {
+                                                    isVideo(item.fields.file_extension) && <video controls play="true">
+                                                                                                <source src={item.fields.prefix_url+item.fields.file} />
+                                                                                                Your browser does not support the video tag.
+                                                                                            </video>
+                                                }
+
+                                                {/*I******************************************* OTHER FILE ********************************************/}
+                                                {
+                                                    switchImageFile(item.fields.file_extension.toLowerCase()) && <>
+                                                        <img 
+                                                            src={switchImageFile(item.fields.file_extension.toLowerCase())} 
+                                                            alt="PDF" 
+                                                            className="doc"
+                                                            data-name={item.fields.file_name}
+                                                            data-url={urlBase+item.fields.prefix_url+item.fields.file} 
+                                                            onClick={e => chargeFileToDownload(e)}
+                                                        />
+                                                        <div className="folder-info">
+                                                            <span>{item.fields.file_name}</span> 
+                                                        </div>
+                                                    </>
+                                                }
+                                                {/*E******************************************* OTHER FILE ********************************************/}
+
                                             </div>
                                         )
-                                    }
-                                    {/*I******************************************** IMG FILE **********************************************/}
-                                    { 
-                                        isImage(item.fields.file_extension) && <img 
-                                                                                    decoding="async" 
-                                                                                    src={item.fields.prefix_url+item.fields.file_compress} 
-                                                                                    alt="IMAGE" 
-                                                                                    className={item.fields.orientation}
-                                                                                    data-id_image={item.pk}
-                                                                                    onClick={e => viewPicture(e)}
-                                                                                /> 
-                                    }
-                                    {/*E******************************************** IMG FILE **********************************************/}
-
-                                    {
-                                        isVideo(item.fields.file_extension) && <video controls play="true">
-                                                                                    <source src={item.fields.prefix_url+item.fields.file} />
-                                                                                    Your browser does not support the video tag.
-                                                                                </video>
-                                    }
-
-                                    {/*I******************************************* OTHER FILE ********************************************/}
-                                    {
-                                        switchImageFile(item.fields.file_extension.toLowerCase()) && <>
-                                            <img 
-                                                src={switchImageFile(item.fields.file_extension.toLowerCase())} 
-                                                alt="PDF" 
-                                                className="doc"
-                                                data-name={item.fields.file_name}
-                                                data-url={urlBase+item.fields.prefix_url+item.fields.file} 
-                                                onClick={e => chargeFileToDownload(e)}
-                                            />
-                                            <div className="folder-info">
-                                                <span>{item.fields.file_name}</span> 
-                                            </div>
-                                        </>
-                                    }
-                                    {/*E******************************************* OTHER FILE ********************************************/}
-
-                                </div>
-                            )
-                        })
+                                    })
+                                )
+                            }
+                        </div>
+                    ) : (
+                        <EmptyFolder />
                     )
-                }
-                
-
-            </div>
+                    
+                ) : (
+                    <NotExists />
+                )
+            }
 
             {/*I****************************************** MODAL SECTION *******************************************/}
 

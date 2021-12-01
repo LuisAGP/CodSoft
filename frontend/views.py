@@ -84,6 +84,7 @@ def getDirectory(request):
     if request.method == "POST" and 'route' in request.POST:
         
         id_current_folder = None
+        folder_route = "/"
 
         if request.POST['route'] != "null":
             route = str(request.POST['route']).split('/')
@@ -102,10 +103,23 @@ def getDirectory(request):
             folders = Folder.objects.filter(folder_route='./', deleted_at=None, id_user=request.user.id)
             files = File.objects.filter(file_route='./', deleted_at=None, id_user=request.user.id)
         
+
+        exists = False if not id_current_folder and folder_route != "/" else True
+        notEmpty = False if not files and not folders else True
+
         folders = serializers.serialize('json', folders)
         files = serializers.serialize('json', files)
 
-        response = {'files': files, 'folders': folders, 'id_current_folder': id_current_folder}
+        
+
+
+        response = {
+            'files': files, 
+            'folders': folders, 
+            'id_current_folder': id_current_folder, 
+            'exists': exists, 
+            'notEmpty': notEmpty 
+         }
 
     else:
         response = {"status": 200, "message": "Invalid data!"}
